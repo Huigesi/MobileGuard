@@ -12,7 +12,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="160dp"
-            android:background="@color/purple">
+            android:background="@color/colorAccent">
 
             <ImageView
                 android:id="@+id/imgv"
@@ -48,24 +48,24 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    style="@style/textview16sp"
+                    android:layout_height="match_parent"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:drawablePadding="5dp"
                     android:drawableTop="@drawable/sim_alarm_icon"
                     android:gravity="center"
                     android:text="SIM卡变更报警"
-                    android:textColor="@color/purple"/>
+                    android:textColor="@color/colorAccent"/>
 
                 <TextView
-                    style="@style/textview16sp"
+                    android:layout_height="match_parent"
                     android:layout_width="0dp"
-                    android:layout_width="1"
+                    android:layout_weight="1"
                     android:drawablePadding="5dp"
                     android:drawableTop="@drawable/location_icon"
                     android:gravity="center"
                     android:text="GPS追踪"
-                    android:textColor="@color/purple"/>
+                    android:textColor="@color/colorAccent"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
