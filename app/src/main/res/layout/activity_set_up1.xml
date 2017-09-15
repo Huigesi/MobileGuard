@@ -67,7 +67,40 @@
                     android:text="GPS追踪"
                     android:textColor="@color/colorAccent"/>
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:drawablePadding="5dp"
+                    android:drawableTop="@drawable/lock_screen_icon"
+                    android:gravity="center"
+                    android:text="远程锁屏"
+                    android:textColor="@color/colorAccent"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:drawablePadding="5dp"
+                    android:drawableTop="@drawable/delete_data"
+                    android:gravity="center"
+                    android:text="远程删除数据"
+                    android:textColor="@color/colorAccent"/>
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="55dp"
+    android:layout_weight="10"
+    android:background="@color/colorAccent"
+    android:gravity="center" >
 
+    <include layout="@layout/setup_radiogroup" />
+</LinearLayout>
 </LinearLayout>
