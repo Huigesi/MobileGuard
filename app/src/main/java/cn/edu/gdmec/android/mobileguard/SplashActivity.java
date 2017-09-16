@@ -2,6 +2,7 @@ package cn.edu.gdmec.android.mobileguard;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Window;
 import android.widget.TextView;
 
 import cn.edu.gdmec.android.mobileguard.m1Home.utils.MyUtils;
@@ -12,6 +13,7 @@ public class SplashActivity extends AppCompatActivity {
     private String mVersion;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         mVersion = MyUtils.getVersion(getApplicationContext());
