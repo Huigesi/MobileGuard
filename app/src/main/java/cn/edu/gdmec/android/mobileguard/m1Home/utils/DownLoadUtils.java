@@ -10,7 +10,7 @@ import android.webkit.MimeTypeMap;
  */
 
 public class DownLoadUtils {
-    public void downdloadApk(String url, String targetFile, Context context){
+    public void downloadApk(String url, String targetFile, Context context){
         DownloadManager.Request request =new DownloadManager.Request(Uri.parse(url));
         request.setAllowedOverRoaming(false);
         MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
