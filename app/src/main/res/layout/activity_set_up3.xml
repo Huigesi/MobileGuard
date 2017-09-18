@@ -14,7 +14,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="160dp"
-            android:background="@color/colorAccent">
+            android:background="@color/purple">
 
             <ImageView
                 android:id="@+id/imgv"
@@ -50,7 +50,7 @@
                 android:drawableLeft="@drawable/contact_et_left_icon"
                 android:hint="请输入安全号码"
                 android:inputType="phone"
-                android:textColorHint="@color/colorAccent"/>
+                android:textColorHint="@color/purple"/>
 
             <Button
                 android:id="@+id/btn_addcontact"
@@ -66,7 +66,7 @@
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_weight="10"
-        android:background="@color/colorAccent"
+        android:background="@color/purple"
         android:gravity="center">
 
         <include layout="@layout/setup_radiogroup"/>

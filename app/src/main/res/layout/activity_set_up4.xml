@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="4"
-            android:background="@color/colorAccent">
+            android:background="@color/purple">
 
             <ImageView
                 android:id="@+id/imgv"
@@ -43,12 +43,12 @@
 
             <TextView
                android:id="@+id/tv_setup4_status"
+                style="@style/textview16sp"
                 android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
                 android:drawableLeft="@drawable/security_phone"
                 android:drawablePadding="10dp"
-                android:textColor="@color/colorAccent"
-                android:layout_height="wrap_content"
-                android:layout_width="1sp" />
+                android:textColor="@color/purple" />
 
             <ToggleButton
                 android:id="@+id/togglebtn_securityfunction"
@@ -67,7 +67,7 @@
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_weight="10"
-        android:background="@color/colorAccent"
+        android:background="@color/purple"
         android:gravity="center">
 
         <include layout="@layout/setup_radiogroup"/>

@@ -6,12 +6,14 @@
 
     <TextView
         android:id="@+id/tv_setting_title"
+        style="@style/textview16sp"
         android:padding="3dp"
         android:text="黑名单设置"
         android:textColor="@color/bright_blue"/>
 
     <TextView
         android:id="@+id/tv_setting_status"
+        style="@style/textview14sp"
         android:layout_below="@+id/tv_setting_title"
         android:padding="3dp"
         android:text="黑名单拦截已开始"
