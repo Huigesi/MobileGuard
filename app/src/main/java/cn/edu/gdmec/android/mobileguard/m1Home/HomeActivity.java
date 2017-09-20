@@ -1,8 +1,13 @@
 package cn.edu.gdmec.android.mobileguard.m1Home;
 
+import android.app.admin.DevicePolicyManager;
+import android.content.ComponentName;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
@@ -12,13 +17,17 @@ import android.widget.Toast;
 
 import cn.edu.gdmec.android.mobileguard.R;
 import cn.edu.gdmec.android.mobileguard.m1Home.adapter.HomeAdapter;
+import cn.edu.gdmec.android.mobileguard.m2theftguard.dialog.SetUpPasswordDialog;
+import cn.edu.gdmec.android.mobileguard.m2theftguard.receiver.MyDeviceAdminReciever;
 
 public class HomeActivity extends AppCompatActivity {
 
-
-
     private long mExitTime;
     private GridView gv_home;
+    private SharedPreferences msharedPreferences;
+    private DevicePolicyManager policyManager;
+    private ComponentName componentName;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -33,7 +42,7 @@ public class HomeActivity extends AppCompatActivity {
         gv_home.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                switch (position){
+                switch (position) {
                     case 0://手机防盗
                     case 1://通讯卫士
                         //startActivity(SecurityPhoneActivity.class);
@@ -57,9 +66,40 @@ public class HomeActivity extends AppCompatActivity {
                         break;
                     case 8://设置中心
                         //startActivity(SettingsActivity.class);
+                        break;
+
                 }
             }
         });
+        policyManager=(DevicePolicyManager) getSystemService(DEVICE_POLICY_SERVICE);
+    componentName=new ComponentName(this, MyDeviceAdminReciever.class);
+        boolean active=policyManager.isAdminActive(componentName);
+        if (!active){
+            Intent intent= new Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN);
+            intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN,componentName);
+            intent.putExtra(DevicePolicyManager.EXTRA_ADD_EXPLANATION,"获取超级管理员权限，用于远程锁屏和清除数据");
+            startActivity(intent);
+        }
+    }
+   /* private void showSetUpPswdDialog(){
+        final SetUpPasswordDialog setUpPasswordDialog=new SetUpPasswordDialog(HomeActivity.this);
+        setUpPasswordDialog.setMyCallBack(new SetUpPasswordDialog.MyCallBack(){
+            @Override
+            public void ok(){
+                String firstPwsd=setUpPasswordDialog.mFirstPWDET.getText().toString().trim();
+                String affirmPwsd=setUpPasswordDialog.mAffirmET.getText().toString().trim();
+             if(!TextUtils.isEmpty(firstPwsd)&&!TextUtils.isEmpty(affirmPwsd)){
+                if(firstPwsd.equals(affirmPwsd)){
+                savePswd()
+               }
+             }
+            }
+        });
+
+    }*/
+    public void startActivity(Class<?> cls){
+        Intent intent=new Intent(HomeActivity.this, cls);
+        startActivity(intent);
     }
 
     @Override
