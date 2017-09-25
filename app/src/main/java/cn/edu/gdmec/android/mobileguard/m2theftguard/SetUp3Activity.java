@@ -37,7 +37,7 @@ public class SetUp3Activity extends BaseSetUpActivity implements View.OnClickLis
     public void showNext(){
         String safePhone=mInputPhone.getText().toString().trim();
         if (TextUtils.isEmpty(safePhone)){
-            //Toast.makeText(this,"请输入安全号码",0).show();
+            Toast.makeText(this,"请输入安全号码",Toast.LENGTH_SHORT).show();
             return;
         }
         SharedPreferences.Editor edit=sp.edit();
