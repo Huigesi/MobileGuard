@@ -24,6 +24,7 @@ public class SetUpPasswordDialog extends Dialog implements View.OnClickListener{
     public SetUpPasswordDialog(Context context) {
         super(context, R.style.dialog_custom);
     }
+
     public void setMyCallBack(MyCallBack myCallBack){
         this.myCallBack=myCallBack;
     }
