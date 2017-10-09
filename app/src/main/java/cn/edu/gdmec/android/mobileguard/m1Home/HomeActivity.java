@@ -134,7 +134,7 @@ public class HomeActivity extends AppCompatActivity {
             }
 
             @Override
-            public void cancle() {
+            public void cancel() {
                 setUpPasswordDialog.dismiss();
             }
         });
@@ -147,7 +147,7 @@ public class HomeActivity extends AppCompatActivity {
         mInPswdDialog.setCallBack(new InterPasswordDialog.MyCallBack(){
             @Override
             public void confirm(){
-                if(!TextUtils.isEmpty(mInPswdDialog.getPassword())){
+                if(TextUtils.isEmpty(mInPswdDialog.getPassword())){
                     Toast.makeText(HomeActivity.this,"密码不能为空",Toast.LENGTH_LONG).show();
                     }else if(password.equals(MD5Utils.encode(mInPswdDialog.getPassword()))){
                         mInPswdDialog.dismiss();
@@ -159,7 +159,7 @@ public class HomeActivity extends AppCompatActivity {
             }
 
             @Override
-            public void cancle() {
+            public void cancel() {
                 mInPswdDialog.dismiss();
             }
         });
