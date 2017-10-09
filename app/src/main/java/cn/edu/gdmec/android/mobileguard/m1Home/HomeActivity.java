@@ -81,7 +81,7 @@ public class HomeActivity extends AppCompatActivity {
                 }
             }
         });
-        /*policyManager=(DevicePolicyManager) getSystemService(DEVICE_POLICY_SERVICE);
+        policyManager=(DevicePolicyManager) getSystemService(DEVICE_POLICY_SERVICE);
         componentName=new ComponentName(this, MyDeviceAdminReciever.class);
         boolean active=policyManager.isAdminActive(componentName);
         if (!active){
@@ -90,9 +90,9 @@ public class HomeActivity extends AppCompatActivity {
             intent.putExtra(DevicePolicyManager.EXTRA_ADD_EXPLANATION,"获取超级管理员权限，用于远程锁屏和清除数据");
             startActivity(intent);
         }
-    }*/
-
     }
+
+
     public void startActivity(Class<?> cls){
         Intent intent=new Intent(HomeActivity.this,cls);
        startActivity(intent);
