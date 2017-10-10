@@ -48,7 +48,7 @@ public class SetUp3Activity extends BaseSetUpActivity implements View.OnClickLis
 
     @Override
     public void showPre() {
-startActivityAndFinishShelf(SetUp2Activity.class);
+    startActivityAndFinishShelf(SetUp2Activity.class);
     }
 
     @Override

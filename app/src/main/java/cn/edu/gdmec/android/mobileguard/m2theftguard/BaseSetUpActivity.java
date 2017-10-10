@@ -37,7 +37,7 @@ public abstract class BaseSetUpActivity extends AppCompatActivity{
                             overridePendingTransition(R.anim.pre_in, R.anim.pre_out);
                             return true;
                         }
-                        if ((e2.getRawX() - e1.getRawX()) > 200) {
+                        if ((e1.getRawX() - e2.getRawX()) > 200) {
                             showNext();
                             overridePendingTransition(R.anim.next_in, R.anim.next_out);
                             return true;
@@ -53,7 +53,7 @@ public abstract class BaseSetUpActivity extends AppCompatActivity{
         mGestureDetector.onTouchEvent(event);
         return super.onTouchEvent(event);
     }
-public void startActivityAndFinishShelf(Class<?> cls){
+    public void startActivityAndFinishShelf(Class<?> cls){
     Intent intent=new Intent(this,cls);
     startActivity(intent);
     finish();

@@ -57,12 +57,12 @@ startActivityAndFinishShelf(SetUp3Activity.class);
 
     @Override
     public void showPre() {
-startActivityAndFinishShelf(SetUp1Activity.class);
+ startActivityAndFinishShelf(SetUp1Activity.class);
     }
 
     @Override
     public void onClick(View v) {
-switch (v.getId()){
+   switch (v.getId()){
     case R.id.btn_bind_sim:
         bindSIM();
 }

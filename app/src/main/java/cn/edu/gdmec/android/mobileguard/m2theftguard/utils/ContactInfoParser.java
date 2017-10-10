@@ -67,7 +67,7 @@ public class ContactInfoParser {
                 int nameFieldColumnIndex=mCursor.getColumnIndex("name");
                 info.name=mCursor.getString(nameFieldColumnIndex);
                 int numberFieldColumIndex=mCursor.getColumnIndex("number");
-                info.phone=mCursor.getString(nameFieldColumnIndex);
+                info.phone=mCursor.getString(numberFieldColumIndex);
                 infos.add(info);
             }
         }
