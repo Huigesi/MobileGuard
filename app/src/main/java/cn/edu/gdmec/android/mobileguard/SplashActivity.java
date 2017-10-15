@@ -11,7 +11,6 @@ import cn.edu.gdmec.android.mobileguard.m1Home.utils.VersionUpdateUtils;
 public class SplashActivity extends AppCompatActivity {
     private TextView mTvVersion;
     private String mVersion;
-    int i;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
