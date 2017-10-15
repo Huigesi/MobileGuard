@@ -18,7 +18,7 @@ import cn.edu.gdmec.android.mobileguard.m3communicationguard.entity.BlackContact
  */
 
 public class BlackNumberDao {
-    private BlackNumberOpenHelper blackNumberOpenHelper;
+   /* private BlackNumberOpenHelper blackNumberOpenHelper;
     public BlackNumberDao(Context context){
         super();
         blackNumberOpenHelper=new BlackNumberOpenHelper(context);
@@ -98,5 +98,5 @@ public class BlackNumberDao {
         cursor.close();
         db.close();
         return count;
-    }
+    }*/
 }

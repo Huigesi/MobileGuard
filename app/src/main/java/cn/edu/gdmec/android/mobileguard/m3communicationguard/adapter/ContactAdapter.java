@@ -15,7 +15,7 @@ import cn.edu.gdmec.android.mobileguard.m3communicationguard.entity.ContactInfo;
  * Created by 黄煜辉 on 2017/9/20.
  */
 
-public class ContactAdapter extends BaseAdapter{
+public class ContactAdapter {/*extends BaseAdapter{
     private List<ContactInfo>contactInfos;
     private Context context;
 
@@ -63,5 +63,5 @@ public class ContactAdapter extends BaseAdapter{
         TextView mPhoneTV;
         View mContactImgv;
     }
-
+*/
 }

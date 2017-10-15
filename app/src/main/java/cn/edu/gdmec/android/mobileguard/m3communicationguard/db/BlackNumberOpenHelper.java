@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  * Created by 黄煜辉 on 2017/9/20.
  */
 
-public class BlackNumberOpenHelper extends SQLiteOpenHelper{
+public class BlackNumberOpenHelper{/*extends SQLiteOpenHelper{
     public BlackNumberOpenHelper(Context context) {
         super(context,"blackNumber.db",null,1);
     }
@@ -21,5 +21,5 @@ public class BlackNumberOpenHelper extends SQLiteOpenHelper{
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-    }
+    }*/
 }

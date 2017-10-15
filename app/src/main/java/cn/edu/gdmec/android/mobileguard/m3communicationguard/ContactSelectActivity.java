@@ -27,7 +27,9 @@ import cn.edu.gdmec.android.mobileguard.m3communicationguard.utils.ContactInfoPa
  * Created by 黄煜辉 on 2017/9/20.
  */
 
-public class ContactSelectActivity extends AppCompatActivity implements View.OnClickListener {
+public class ContactSelectActivity{
+
+} /*extends AppCompatActivity implements View.OnClickListener {
     private ListView mListView;
     private ContactAdapter adapter;
     private List<ContactInfo> systemContacts;
@@ -88,4 +90,4 @@ public class ContactSelectActivity extends AppCompatActivity implements View.OnC
                 break;
         }
     }
-}
+}*/

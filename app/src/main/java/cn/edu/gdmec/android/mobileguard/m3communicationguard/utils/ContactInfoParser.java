@@ -16,7 +16,7 @@ import cn.edu.gdmec.android.mobileguard.m3communicationguard.entity.ContactInfo;
  */
 
 public class ContactInfoParser {
-    public static List<ContactInfo> getSystemContact(Context context){
+    /*public static List<ContactInfo> getSystemContact(Context context){
         ContentResolver resolver=context.getContentResolver();
         Uri uri=Uri.parse("content://com.android.contacts/raw_contacts");
         Uri datauri=Uri.parse("content://com.android.contacts/data");
@@ -65,5 +65,5 @@ public class ContactInfoParser {
         }
         mCursor.close();
         return infos;
-    }
+    }*/
 }
