@@ -96,13 +96,13 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="55dp"
-    android:layout_weight="10"
-    android:background="@color/purple"
-    android:gravity="center" >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_weight="10"
+        android:background="@color/purple"
+        android:gravity="center" >
 
-    <include layout="@layout/setup_radiogroup" />
-</LinearLayout>
+        <include layout="@layout/setup_radiogroup" />
+    </LinearLayout>
 </LinearLayout>

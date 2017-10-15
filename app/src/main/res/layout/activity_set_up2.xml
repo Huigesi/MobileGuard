@@ -57,7 +57,7 @@
                 android:text="@string/_sim_sim_bind_info"
                 android:textColor="@color/purple"
                 android:textScaleX="1.1"
-                 />
+                />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -72,7 +72,7 @@
                 android:layout_height="45dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="20dp"
-                android:background="@drawable/sim_bind_p"
+                android:background="@drawable/sim_bind_selector"
                 android:gravity="center"/>
         </LinearLayout>
     </LinearLayout>

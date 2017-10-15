@@ -18,7 +18,7 @@ import cn.edu.gdmec.android.mobileguard.R;
 
 public class SetUp3Activity extends BaseSetUpActivity implements View.OnClickListener{
     private EditText mInputPhone;
-
+    int i;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -50,7 +50,7 @@ public class SetUp3Activity extends BaseSetUpActivity implements View.OnClickLis
 
     @Override
     public void showPre() {
-    startActivityAndFinishShelf(SetUp2Activity.class);
+        startActivityAndFinishShelf(SetUp2Activity.class);
     }
 
     @Override

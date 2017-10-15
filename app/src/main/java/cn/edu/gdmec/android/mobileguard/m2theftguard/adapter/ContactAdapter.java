@@ -1,17 +1,17 @@
 package cn.edu.gdmec.android.mobileguard.m2theftguard.adapter;
 
 import android.content.Context;
-import android.database.DataSetObserver;
+
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ListAdapter;
+
 import android.widget.TextView;
 
 import java.util.List;
 
 import cn.edu.gdmec.android.mobileguard.R;
-import cn.edu.gdmec.android.mobileguard.m2theftguard.ContactSelectActivity;
+
 import cn.edu.gdmec.android.mobileguard.m2theftguard.entity.ContactInfo;
 
 /**
