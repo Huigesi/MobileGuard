@@ -16,8 +16,25 @@ import cn.edu.gdmec.android.mobileguard.R;
  * Created by 黄煜辉 on 2017/9/20.
  */
 
-public class SetUp2Activity extends BaseSetUpActivity implements View.OnClickListener{
-    private TelephonyManager mTelephonyManager;
+public class SetUp2Activity extends BaseSetUpActivity /*implements View.OnClickListener*/{
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_set_up2);
+        ((RadioButton) findViewById(R.id.rb_second)).setChecked(true);
+
+    }
+
+    @Override
+    public void showNext() {
+        startActivityAndFinishShelf(SetUp3Activity.class);
+    }
+
+    @Override
+    public void showPre() {
+        startActivityAndFinishShelf(SetUp1Activity.class);
+    }
+    /*private TelephonyManager mTelephonyManager;
     private Button mBindSIMBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -81,5 +98,5 @@ public class SetUp2Activity extends BaseSetUpActivity implements View.OnClickLis
             Toast.makeText(this,"SIM卡已经绑定!",Toast.LENGTH_SHORT).show();
             mBindSIMBtn.setEnabled(false);
         }
-    }
+    }*/
 }

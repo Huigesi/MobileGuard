@@ -26,8 +26,21 @@ import cn.edu.gdmec.android.mobileguard.m2theftguard.entity.ContactInfo;
  * Created by 黄煜辉 on 2017/9/20.
  */
 
-public class LostFindActivity extends Activity implements View.OnClickListener{
-    private TextView mSafePhoneTV;
+public class LostFindActivity extends AppCompatActivity /*implements View.OnClickListener*/{
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_lost_find);
+        startSetup1Activity();
+    }
+
+    private void startSetup1Activity() {
+        Intent intent = new Intent(LostFindActivity.this,SetUp1Activity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    /*private TextView mSafePhoneTV;
     private RelativeLayout mInterSetupRL;
     private SharedPreferences msharedPrefences;
     private ToggleButton mToggleButton;
@@ -102,5 +115,5 @@ public class LostFindActivity extends Activity implements View.OnClickListener{
                 break;
         }
 
-    }
+    }*/
 }
