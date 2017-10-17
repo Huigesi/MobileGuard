@@ -16,16 +16,16 @@ import cn.edu.gdmec.android.mobileguard.R;
  * Created by 黄煜辉 on 2017/9/20.
  */
 
-public class SetUp3Activity extends BaseSetUpActivity implements View.OnClickListener{
+public class SetUp3Activity extends BaseSetUpActivity /*implements View.OnClickListener*/{
     private EditText mInputPhone;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_up3);
-        ((RadioButton) findViewById(R.id.rb_third)).setChecked(true);
-        initView();
+        /*((RadioButton) findViewById(R.id.rb_third)).setChecked(true);
+        initView();*/
     }
-    private void initView() {
+   /* private void initView() {
         ((RadioButton)findViewById(R.id.rb_third)).setChecked(true);
         findViewById(R.id.btn_addcontact).setOnClickListener(this);
         mInputPhone=(EditText)findViewById(R.id.et_inputphone);
@@ -33,17 +33,17 @@ public class SetUp3Activity extends BaseSetUpActivity implements View.OnClickLis
         if (!TextUtils.isEmpty(safephone)){
             mInputPhone.setText(safephone);
         }
-    }
+    }*/
     @Override
     public void showNext() {
-        String safePhone=mInputPhone.getText().toString().trim();
+      /*  String safePhone=mInputPhone.getText().toString().trim();
         if (TextUtils.isEmpty(safePhone)){
             Toast.makeText(this,"请输入安全号码",Toast.LENGTH_SHORT).show();
             return;
         }
         SharedPreferences.Editor edit=sp.edit();
         edit.putString("safephone",safePhone);
-        edit.commit();
+        edit.commit();*/
         startActivityAndFinishShelf(SetUp4Activity.class);
     }
 
@@ -52,22 +52,22 @@ public class SetUp3Activity extends BaseSetUpActivity implements View.OnClickLis
         startActivityAndFinishShelf(SetUp2Activity.class);
     }
 
-    @Override
+    /*@Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_addcontact:
                 startActivityForResult(new Intent(this,ContactSelectActivity.class),0);
                 break;
         }
-    }
-    @Override
+    }*/
+    /*@Override
     protected void onActivityResult(int requestCode,int resultCode,Intent data){
         super.onActivityResult(requestCode,resultCode,data);
         if (data!=null){
             String phone =data.getStringExtra("phone");
             mInputPhone.setText(phone);
         }
-    }
+    }*/
     /*
     int i;
     @Override
