@@ -16,34 +16,18 @@ import cn.edu.gdmec.android.mobileguard.R;
  * Created by 黄煜辉 on 2017/9/20.
  */
 
-public class SetUp2Activity extends BaseSetUpActivity /*implements View.OnClickListener*/{
+public class SetUp2Activity extends BaseSetUpActivity implements View.OnClickListener{
+    private TelephonyManager mTelephonyManager;
+    private Button mBindSIMBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_up2);
         ((RadioButton) findViewById(R.id.rb_second)).setChecked(true);
-
-    }
-
-    @Override
-    public void showNext() {
-        startActivityAndFinishShelf(SetUp3Activity.class);
-    }
-
-    @Override
-    public void showPre() {
-        startActivityAndFinishShelf(SetUp1Activity.class);
-    }
-    /*private TelephonyManager mTelephonyManager;
-    private Button mBindSIMBtn;
-    @Override
-    protected void onCreate(Bundle savedInstanceState){
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_set_up2);
         mTelephonyManager=(TelephonyManager)getSystemService(TELEPHONY_SERVICE);
         initView();
-    }
 
+    }
     private void initView() {
         ((RadioButton)findViewById(R.id.rb_second)).setChecked(true);
         mBindSIMBtn=(Button)findViewById(R.id.btn_bind_sim);
@@ -53,14 +37,6 @@ public class SetUp2Activity extends BaseSetUpActivity /*implements View.OnClickL
         }else{
             mBindSIMBtn.setEnabled(true);
         }
-    }
-
-    private boolean isBind() {
-        String simString=sp.getString("sim" ,null);
-        if(TextUtils.isEmpty(simString)){
-            return false;
-        }
-        return true;
     }
 
     @Override
@@ -76,7 +52,13 @@ public class SetUp2Activity extends BaseSetUpActivity /*implements View.OnClickL
     public void showPre() {
         startActivityAndFinishShelf(SetUp1Activity.class);
     }
-
+    private boolean isBind() {
+        String simString=sp.getString("sim" ,null);
+        if(TextUtils.isEmpty(simString)){
+            return false;
+        }
+        return true;
+    }
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -85,7 +67,6 @@ public class SetUp2Activity extends BaseSetUpActivity /*implements View.OnClickL
                 break;
         }
     }
-
     private void bindSIM() {
         if (!isBind()){
             String simSerialNumber=mTelephonyManager.getSimSerialNumber();
@@ -98,5 +79,28 @@ public class SetUp2Activity extends BaseSetUpActivity /*implements View.OnClickL
             Toast.makeText(this,"SIM卡已经绑定!",Toast.LENGTH_SHORT).show();
             mBindSIMBtn.setEnabled(false);
         }
-    }*/
+    }
+    /*
+    @Override
+    protected void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_set_up2);
+
+
+    }
+
+    @Override
+    public void showNext() {
+
+        startActivityAndFinishShelf(SetUp3Activity.class);
+    }
+
+    @Override
+    public void showPre() {
+        startActivityAndFinishShelf(SetUp1Activity.class);
+    }
+
+
+
+    */
 }

@@ -21,7 +21,7 @@ import cn.edu.gdmec.android.mobileguard.m2theftguard.entity.ContactInfo;
 public class ContactInfoParser {
     public static List<ContactInfo> getSystemContact(Context context) {
         ContentResolver resolver = context.getContentResolver();
-        Uri uri = Uri.parse("content://com.android.contacts/row_contacts");
+        Uri uri = Uri.parse("content://com.android.contacts/raw_contacts");
         Uri datauri = Uri.parse("content://com.android.contacts/data");
         List<ContactInfo> infos = new ArrayList<ContactInfo>();
         Cursor cursor = resolver.query(uri, new String[]{"contact_id"},
@@ -33,16 +33,16 @@ public class ContactInfoParser {
                 ContactInfo info = new ContactInfo();
                 info.id = id;
                 Cursor dataCursor = resolver.query(datauri, new String[]{
-                        "datal", "mimetype"}, "raw_contact_id=?", new String[]{id}, null);
+                        "data1", "mimetype"}, "raw_contact_id=?", new String[]{id}, null);
                 while (dataCursor.moveToNext()) {
-                    String datal = dataCursor.getString(0);
+                    String data1 = dataCursor.getString(0);
                     String mimetype = dataCursor.getString(1);
                     if ("vnd.android.cursor.item/name".equals(mimetype)) {
-                        System.out.println("姓名=" + datal);
-                        info.name = datal;
+                        System.out.println("姓名=" + data1);
+                        info.name = data1;
                     } else if ("vnd.android.cursor.item/phone_v2".equals(mimetype)) {
-                        System.out.println("电话=" + datal);
-                        info.phone = datal;
+                        System.out.println("电话=" + data1);
+                        info.phone = data1;
                     }
                 }
                 if (TextUtils.isEmpty(info.name) && TextUtils.isEmpty(info.phone))

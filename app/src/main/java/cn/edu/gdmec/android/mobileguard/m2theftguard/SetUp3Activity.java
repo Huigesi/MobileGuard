@@ -16,33 +16,15 @@ import cn.edu.gdmec.android.mobileguard.R;
  * Created by 黄煜辉 on 2017/9/20.
  */
 
-public class SetUp3Activity extends BaseSetUpActivity /*implements View.OnClickListener*/{
+public class SetUp3Activity extends BaseSetUpActivity implements View.OnClickListener{
+    private EditText mInputPhone;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_up3);
         ((RadioButton) findViewById(R.id.rb_third)).setChecked(true);
-
-    }
-
-    @Override
-    public void showNext() {
-        startActivityAndFinishShelf(SetUp4Activity.class);
-    }
-
-    @Override
-    public void showPre() {
-        startActivityAndFinishShelf(SetUp2Activity.class);
-    }
-    /*private EditText mInputPhone;
-    int i;
-    @Override
-    protected void onCreate(Bundle savedInstanceState){
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_set_up3);
         initView();
     }
-
     private void initView() {
         ((RadioButton)findViewById(R.id.rb_third)).setChecked(true);
         findViewById(R.id.btn_addcontact).setOnClickListener(this);
@@ -53,7 +35,7 @@ public class SetUp3Activity extends BaseSetUpActivity /*implements View.OnClickL
         }
     }
     @Override
-    public void showNext(){
+    public void showNext() {
         String safePhone=mInputPhone.getText().toString().trim();
         if (TextUtils.isEmpty(safePhone)){
             Toast.makeText(this,"请输入安全号码",Toast.LENGTH_SHORT).show();
@@ -85,5 +67,28 @@ public class SetUp3Activity extends BaseSetUpActivity /*implements View.OnClickL
             String phone =data.getStringExtra("phone");
             mInputPhone.setText(phone);
         }
-    }*/
+    }
+    /*
+    int i;
+    @Override
+    protected void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_set_up3);
+
+    }
+
+
+    @Override
+    public void showNext(){
+
+        startActivityAndFinishShelf(SetUp4Activity.class);
+    }
+
+    @Override
+    public void showPre() {
+        startActivityAndFinishShelf(SetUp2Activity.class);
+    }
+
+
+    */
 }
