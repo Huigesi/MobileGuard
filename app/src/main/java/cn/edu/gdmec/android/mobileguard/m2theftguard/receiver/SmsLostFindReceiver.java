@@ -8,7 +8,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
-import android.telephony.SmsManager;
 import android.telephony.SmsMessage;
 import android.text.TextUtils;
 import android.util.Log;
@@ -21,8 +20,8 @@ import cn.edu.gdmec.android.mobileguard.m2theftguard.service.GPSLocationService;
  * Created by 黄煜辉 on 2017/9/20.
  */
 
-public class SmsLostFindReciver extends BroadcastReceiver{
-    private static final String TAG=SmsLostFindReciver.class.getSimpleName();
+public class SmsLostFindReceiver extends BroadcastReceiver{
+    private static final String TAG=SmsLostFindReceiver.class.getSimpleName();
     private SharedPreferences sharedPreferences;
     private ComponentName componentName;
 

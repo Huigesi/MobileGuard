@@ -4,14 +4,11 @@ import android.app.admin.DevicePolicyManager;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
@@ -21,7 +18,7 @@ import cn.edu.gdmec.android.mobileguard.m1Home.adapter.HomeAdapter;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.LostFindActivity;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.dialog.InterPasswordDialog;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.dialog.SetUpPasswordDialog;
-import cn.edu.gdmec.android.mobileguard.m2theftguard.receiver.MyDeviceAdminReciever;
+import cn.edu.gdmec.android.mobileguard.m2theftguard.receiver.MyDeviceAdminReceiver;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.utils.MD5Utils;
 
 public class HomeActivity extends AppCompatActivity {
@@ -83,7 +80,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
         policyManager=(DevicePolicyManager) getSystemService(DEVICE_POLICY_SERVICE);
-        componentName=new ComponentName(this, MyDeviceAdminReciever.class);
+        componentName=new ComponentName(this, MyDeviceAdminReceiver.class);
         boolean active=policyManager.isAdminActive(componentName);
         if (!active){
             Intent intent= new Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN);

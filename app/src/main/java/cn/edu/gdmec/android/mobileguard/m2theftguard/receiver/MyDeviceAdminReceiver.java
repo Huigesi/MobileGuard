@@ -8,7 +8,7 @@ import android.content.Intent;
  * Created by 黄煜辉 on 2017/9/20.
  */
 
-public class MyDeviceAdminReciever extends DeviceAdminReceiver{
+public class MyDeviceAdminReceiver extends DeviceAdminReceiver{
     @Override
     public void onReceive(Context context, Intent intent) {
 
