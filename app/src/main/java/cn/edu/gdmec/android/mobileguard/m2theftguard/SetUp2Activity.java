@@ -52,6 +52,8 @@ public class SetUp2Activity extends BaseSetUpActivity implements View.OnClickLis
     public void showPre() {
         startActivityAndFinishShelf(SetUp1Activity.class);
     }
+
+
     private boolean isBind() {
         String simString=sp.getString("sim" ,null);
         if(TextUtils.isEmpty(simString)){
