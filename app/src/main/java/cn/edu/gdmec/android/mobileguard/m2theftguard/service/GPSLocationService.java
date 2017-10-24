@@ -39,7 +39,6 @@ public class GPSLocationService extends Service{
         criteria.setAccuracy(Criteria.ACCURACY_FINE);
         criteria.setCostAllowed(true);
         String name=lm.getBestProvider(criteria,true);
-        System.out.println("最好位置提供者："+name);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)!= PackageManager.PERMISSION_GRANTED&&ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_COARSE_LOCATION)!=PackageManager.PERMISSION_GRANTED){
             return;
         }
@@ -52,8 +51,8 @@ public class GPSLocationService extends Service{
             StringBuffer sb=new StringBuffer();
             sb.append("accuracy:"+location.getAccuracy()+"\n");
             sb.append("speed:"+location.getSpeed()+"\n");
-            sb.append("jingdu:"+location.getLongitude()+"\n");
-            sb.append("weidu:"+location.getLatitude()+"\n");
+            sb.append("Longitude:"+location.getLongitude()+"\n");
+            sb.append("Latitude:"+location.getLatitude()+"\n");
             String result=sb.toString();
             SharedPreferences sp=getSharedPreferences("config",MODE_PRIVATE);
             String safenumber=sp.getString("safephone","");

@@ -26,37 +26,24 @@ import cn.edu.gdmec.android.mobileguard.m2theftguard.entity.ContactInfo;
  * Created by 黄煜辉 on 2017/9/20.
  */
 
-public class LostFindActivity extends AppCompatActivity /*implements View.OnClickListener*/{
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lost_find);
-        startSetup1Activity();
-    }
-
-    private void startSetup1Activity() {
-        Intent intent = new Intent(LostFindActivity.this,SetUp1Activity.class);
-        startActivity(intent);
-        finish();
-    }
-
-    /*private TextView mSafePhoneTV;
+public class LostFindActivity extends AppCompatActivity implements View.OnClickListener{
+    private TextView mSafePhoneTV;
     private RelativeLayout mInterSetupRL;
     private SharedPreferences msharedPrefences;
     private ToggleButton mToggleButton;
     private TextView mProtectStatusTV;
-
-    protected void onCreate(Bundle savedInstanceState){
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_lost_find);
         msharedPrefences=getSharedPreferences("config",MODE_PRIVATE);
         if(!isSetUp()){
-            startSetUp1Activity();
+            startSetup1Activity();
         }
         initView();
-    }
 
+    }
     private void initView() {
         TextView mTitleTV=(TextView)findViewById(R.id.tv_title);
         mTitleTV.setText("手机防盗");
@@ -93,6 +80,38 @@ public class LostFindActivity extends AppCompatActivity /*implements View.OnClic
         });
 
     }
+    private boolean isSetUp() {
+        return msharedPrefences.getBoolean("isSetUp",false);
+    }
+    private void startSetup1Activity() {
+        Intent intent = new Intent(LostFindActivity.this,SetUp1Activity.class);
+        startActivity(intent);
+        finish();
+    }
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.rl_inter_setup_wizard:
+                startSetup1Activity();
+                break;
+            case R.id.imgv_leftbtn:
+                finish();
+                break;
+        }
+
+    }
+
+    /*
+
+    protected void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_lost_find);
+
+
+    }
+
+
 
     private void startSetUp1Activity() {
         Intent intent = new Intent(LostFindActivity.this,SetUp1Activity.class);
@@ -100,20 +119,7 @@ public class LostFindActivity extends AppCompatActivity /*implements View.OnClic
         finish();
     }
 
-    private boolean isSetUp() {
-        return msharedPrefences.getBoolean("isSetUp",false);
-    }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.rl_inter_setup_wizard:
-                startSetUp1Activity();
-                break;
-            case R.id.imgv_leftbtn:
-                finish();
-                break;
-        }
 
-    }*/
+    */
 }
