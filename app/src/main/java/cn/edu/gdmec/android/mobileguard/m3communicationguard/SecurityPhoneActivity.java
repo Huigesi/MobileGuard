@@ -25,6 +25,7 @@ import cn.edu.gdmec.android.mobileguard.m3communicationguard.entity.BlackContact
  */
 
 public class SecurityPhoneActivity extends AppCompatActivity implements View.OnClickListener{
+    int i;
     private FrameLayout mHaveBlackNumber;
     private FrameLayout mNoBlackNumber;
     private BlackNumberDao dao;
