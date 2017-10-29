@@ -20,6 +20,7 @@ public class SetUp4Activity extends BaseSetUpActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_up4);
+        getSupportActionBar().hide();
         ((RadioButton) findViewById(R.id.rb_four)).setChecked(true);
         initView();
     }

@@ -23,6 +23,7 @@ public class SetUp2Activity extends BaseSetUpActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_up2);
+        getSupportActionBar().hide();
         ((RadioButton) findViewById(R.id.rb_second)).setChecked(true);
         mTelephonyManager=(TelephonyManager)getSystemService(TELEPHONY_SERVICE);
         initView();

@@ -36,6 +36,7 @@ public class LostFindActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_lost_find);
         msharedPrefences=getSharedPreferences("config",MODE_PRIVATE);
         if(!isSetUp()){
