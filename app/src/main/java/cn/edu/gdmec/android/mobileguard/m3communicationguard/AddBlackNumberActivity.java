@@ -106,7 +106,7 @@ public class AddBlackNumberActivity
                 startActivityForResult(
                        new Intent(this, ContactSelectActivity.class),0);
                 break;
-        } //new Intent(this, ContactSelectActivity.class),0);
+        }
 
     }
 }
