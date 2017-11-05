@@ -91,5 +91,7 @@
                 <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
             </intent-filter>
         </receiver>
+        <!--m4-->
+        <activity android:name=".m4appmanager.AppManagerActivity"/>
     </application>
 </manifest>
