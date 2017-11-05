@@ -18,7 +18,9 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -70,18 +72,23 @@ public class EngineUtils {
             PackageManager pm=context.getPackageManager();
             PackageInfo packInfo= pm.getPackageInfo(appInfo.packageName,0);
             String version = packInfo.versionName;
+
             long firstInstallTime = packInfo.firstInstallTime;
 
            PackageInfo packinfo1 = pm.getPackageInfo(appInfo.packageName, PackageManager.GET_SIGNATURES);
             String certMsg ="";
             Signature[] sigs = packinfo1.signatures;    //签名
             CertificateFactory certFactory = CertificateFactory.getInstance("X.509");
-//获取证书
+            //获取证书
             X509Certificate cert = (X509Certificate) certFactory.generateCertificate(
                     new ByteArrayInputStream(sigs[0].toByteArray()));
-//获取证书发行者   可根据证书发行者来判断该应用是否被二次打包（被破解的应用重新打包后，签名与原包一定不同，据此可以判断出该应用是否被人做过改动）
+            //获取证书发行者
             certMsg+= cert.getIssuerDN().toString();
             certMsg+= cert.getSubjectDN().toString();
+            String date=null;
+            SimpleDateFormat dateformat = new SimpleDateFormat("yyyy年MM月dd号 hh:mm:ss");
+            //Date afterdate = cert.getNotAfter();
+            date=dateformat.format(firstInstallTime);
 
 
             //List<PermissionInfo> permissionInfoList = new ArrayList<PermissionInfo>();
@@ -101,7 +108,7 @@ public class EngineUtils {
             AlertDialog.Builder builder =new AlertDialog.Builder(context);
             builder.setTitle(appInfo.appName);
             builder.setMessage("version:"+version+"\n"+
-                    "Install time:"+"\n"+firstInstallTime+"\n"+
+                    "Install time:"+"\n"+date+"\n"+
                     "Certificate issuer:"+certMsg+"\n"+
                     "Permission:"+"\n"+s);
             builder.setNegativeButton("确定", new DialogInterface.OnClickListener() {
