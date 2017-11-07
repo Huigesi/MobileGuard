@@ -87,7 +87,6 @@ public class EngineUtils {
             certMsg+= cert.getSubjectDN().toString();
             String date=null;
             SimpleDateFormat dateformat = new SimpleDateFormat("yyyy年MM月dd号 hh:mm:ss");
-            //Date afterdate = cert.getNotAfter();
             date=dateformat.format(firstInstallTime);
 
 

@@ -87,6 +87,7 @@ public class BlackContactAdapter extends BaseAdapter {
         holder.mModeTV.setTextColor(context.getResources().getColor(
                 R.color.bright_purple));
         holder.mContactImgv.setBackgroundResource(R.drawable.brightpurple_contact_icon);
+
         holder.mDeleteView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
