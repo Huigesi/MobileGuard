@@ -123,14 +123,3 @@ public class EngineUtils {
     }
 
 }
-/*PackageManager pm = context.getPackageManager();
-                PackageInfo pi;
-            // 参数2必须是PackageManager.GET_PERMISSIONS
-                pi = pm.getPackageInfo(packageName, PackageManager.GET_PERMISSIONS);
-                String[] permissions = pi.requestedPermissions;
-                if(permissions != null){
-                for(String str : permissions){
-                Log.i(TAG, str);
-        }
-    }
-}*/
