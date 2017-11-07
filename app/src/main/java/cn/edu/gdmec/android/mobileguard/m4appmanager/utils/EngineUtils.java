@@ -32,6 +32,7 @@ import cn.edu.gdmec.android.mobileguard.m4appmanager.entity.AppInfo;
  */
 
 public class EngineUtils {
+
     public static void shareApplication(Context context, AppInfo appInfo){
         Intent intent=new Intent("android.intent.action.SEND");
         intent.setType("text/plain");
