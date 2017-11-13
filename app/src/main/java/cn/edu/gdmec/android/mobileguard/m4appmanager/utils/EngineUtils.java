@@ -4,23 +4,19 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.PermissionInfo;
 import android.content.pm.Signature;
 import android.net.Uri;
 import android.widget.Toast;
 
 
-import org.apache.commons.codec.binary.StringUtils;
-
 import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -106,7 +102,7 @@ public class EngineUtils {
             String s = Pattern.compile("\\b([\\w\\W])\\b").matcher(a.toString().substring(1,a.toString().length()-1)).replaceAll(".");
 
             AlertDialog.Builder builder =new AlertDialog.Builder(context);
-            builder.setTitle(appInfo.appName);
+
             builder.setMessage("version:"+version+"\n"+
                     "Install time:"+"\n"+date+"\n"+
                     "Certificate issuer:"+certMsg+"\n"+
@@ -121,6 +117,31 @@ public class EngineUtils {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static void ActApp(Context context,AppInfo appInfo){
+        try {
+            PackageManager pm = context.getPackageManager();
+            PackageInfo packInfo = pm.getPackageInfo(appInfo.packageName, 0);
+
+            PackageInfo packinfo2 = pm.getPackageInfo(appInfo.packageName, PackageManager.GET_ACTIVITIES);
+            ActivityInfo[] act =packinfo2.activities;
+            List<ActivityInfo> a=new ArrayList<>();
+            if(act != null){
+                for(ActivityInfo str : act){
+                    a.add(str);
+                }
+            }
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            builder.setTitle(appInfo.appName);
+            String s = Pattern.compile("\\b([\\w\\W])\\b").matcher(a.toString().substring(1,a.toString().length()-1)).replaceAll(".");
+
+            builder.setMessage(s);
+            builder.show();
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
 }
