@@ -23,7 +23,7 @@ import cn.edu.gdmec.android.mobileguard.R;
  * Created by 黄煜辉 on 2017/9/20.
  */
 
-public class VirusScanActivity {/*extends AppCompatActivity implements View.OnClickListener{
+public class VirusScanActivity{/* extends AppCompatActivity implements View.OnClickListener{
     private TextView mLastTimeTV;
     private SharedPreferences mSP;
 
