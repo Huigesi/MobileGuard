@@ -16,7 +16,7 @@ import cn.edu.gdmec.android.mobileguard.m5virusscan.entity.ScanAppInfo;
  * Created by 黄煜辉 on 2017/9/20.
  */
 
-public class ScanVirusAdapter{/* extends BaseAdapter{
+public class ScanVirusAdapter extends BaseAdapter{
 
     private List<ScanAppInfo> mScanAppInfos;
     private Context context;
@@ -26,33 +26,38 @@ public class ScanVirusAdapter{/* extends BaseAdapter{
         mScanAppInfos = scanAppInfo;
         this.context = context;
     }
+    static class ViewHolder{
+        ImageView mAppIconImgv;
+        TextView mAppNameTV;
+        ImageView mScanIconImgv;
+    }
     @Override
     public int getCount(){
         return mScanAppInfos.size();
     }
     @Override
-    public Object getItem(int position){
-        return mScanAppInfos.get(position);
+    public Object getItem(int i){
+        return mScanAppInfos.get(i);
     }
     @Override
-    public long getItemId(int position){
-        return position;
+    public long getItemId(int i){
+        return i;
     }
     @Override
-    public View getView(int position, View convertView, ViewGroup parent){
+    public View getView(int i, View view, ViewGroup viewGroup){
         ViewHolder holder;
-        if (convertView == null){
+        if (view == null){
 
-            convertView = View.inflate(context, R.layout.item_list_applock, null);
+            view = View.inflate(context, R.layout.item_list_applock, null);
             holder = new ViewHolder();
-            holder.mAppIconImgv = (ImageView) convertView.findViewById(R.id.imgv_appicon);
-            holder.mAppNameTV = (TextView) convertView.findViewById(R.id.tv_appname);
-            holder.mScanIconImgv =(ImageView) convertView.findViewById(R.id.imgv_lock);
-            convertView.setTag(holder);
+            holder.mAppIconImgv = (ImageView) view.findViewById(R.id.imgv_appicon);
+            holder.mAppNameTV = (TextView) view.findViewById(R.id.tv_appname);
+            holder.mScanIconImgv =(ImageView) view.findViewById(R.id.imgv_lock);
+            view.setTag(holder);
         }else {
-            holder = (ViewHolder) convertView.getTag();
+            holder = (ViewHolder) view.getTag();
         }
-        ScanAppInfo scanAppInfo = mScanAppInfos.get(position);
+        ScanAppInfo scanAppInfo = mScanAppInfos.get(i);
         if (!scanAppInfo.isVirus){
             holder.mScanIconImgv.setBackgroundResource(R.drawable.blue_right_icon);
             holder.mAppNameTV.setTextColor(context.getResources().getColor(R.color.black));
@@ -62,11 +67,6 @@ public class ScanVirusAdapter{/* extends BaseAdapter{
             holder.mAppNameTV.setText(scanAppInfo.appName+"("+scanAppInfo.description+")");
         }
         holder.mAppIconImgv.setImageDrawable(scanAppInfo.appicon);
-        return convertView;
+        return view;
     }
-    static class ViewHolder{
-        ImageView mAppIconImgv;
-        TextView mAppNameTV;
-        ImageView mScanIconImgv;
-    }*/
 }

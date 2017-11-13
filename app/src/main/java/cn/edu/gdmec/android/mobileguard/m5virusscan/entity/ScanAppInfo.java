@@ -6,10 +6,10 @@ import android.graphics.drawable.Drawable;
  * Created by ASUS on 2017/11/12.
  */
 
-public class ScanAppInfo {/*
+public class ScanAppInfo {
     public String appName;
     public boolean isVirus;
     public String packagename;
     public String description;
-    public Drawable appicon;*/
+    public Drawable appicon;
 }

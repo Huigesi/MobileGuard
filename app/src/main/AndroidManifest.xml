@@ -93,5 +93,8 @@
         </receiver>
         <!--m4-->
         <activity android:name=".m4appmanager.AppManagerActivity"/>
+        <!--m5-->
+        <activity android:name=".m5virusscan.VirusScanActivity"/>
+        <activity android:name=".m5virusscan.VirusScanSpeedActivity"/>
     </application>
 </manifest>

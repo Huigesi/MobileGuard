@@ -23,14 +23,13 @@ import cn.edu.gdmec.android.mobileguard.R;
  * Created by 黄煜辉 on 2017/9/20.
  */
 
-public class VirusScanActivity{/* extends AppCompatActivity implements View.OnClickListener{
+public class VirusScanActivity extends AppCompatActivity implements View.OnClickListener{
     private TextView mLastTimeTV;
     private SharedPreferences mSP;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_virus_scan);
         mSP=getSharedPreferences("config",MODE_PRIVATE);
         copyDB("antivirus.db");
@@ -43,19 +42,6 @@ public class VirusScanActivity{/* extends AppCompatActivity implements View.OnCl
         mLastTimeTV.setText(string);
         super.onResume();
     }
-
-    private void initView() {
-        findViewById(R.id.rl_titlebar).setBackgroundColor(
-                getResources().getColor(R.color.light_blue));
-        ImageView mLeftImgv=(ImageView)findViewById(R.id.imgv_leftbtn);
-        ((TextView)findViewById(R.id.tv_title)).setText("病毒查杀");
-        mLeftImgv.setOnClickListener(this);
-        mLeftImgv.setImageResource(R.drawable.back);
-        mLastTimeTV=(TextView)findViewById(R.id.tv_lastscantime);
-        findViewById(R.id.rl_allscanvirus).setOnClickListener(this);
-
-    }
-
     private void copyDB(final String dbname) {
         new Thread(){
             public void run(){
@@ -81,10 +67,21 @@ public class VirusScanActivity{/* extends AppCompatActivity implements View.OnCl
         }.start();
 
     }
+    private void initView() {
+        findViewById(R.id.rl_titlebar).setBackgroundColor(
+                getResources().getColor(R.color.light_blue));
+        ImageView mLeftImgv=(ImageView)findViewById(R.id.imgv_leftbtn);
+        ((TextView)findViewById(R.id.tv_title)).setText("病毒查杀");
+        mLeftImgv.setOnClickListener(this);
+        mLeftImgv.setImageResource(R.drawable.back);
+        mLastTimeTV=(TextView)findViewById(R.id.tv_lastscantime);
+        findViewById(R.id.rl_allscanvirus).setOnClickListener(this);
+
+    }
 
     @Override
-    public void onClick(View v) {
-        switch (v.getId()){
+    public void onClick(View view) {
+        switch (view.getId()){
             case R.id.imgv_leftbtn:
                 finish();
                 break;
@@ -92,5 +89,5 @@ public class VirusScanActivity{/* extends AppCompatActivity implements View.OnCl
                 startActivity(new Intent(this,VirusScanSpeedActivity.class));
                 break;
         }
-    }*/
+    }
 }

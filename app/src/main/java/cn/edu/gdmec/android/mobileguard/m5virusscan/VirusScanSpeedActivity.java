@@ -4,10 +4,10 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 import android.widget.Button;
@@ -20,19 +20,18 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.logging.Handler;
-import java.util.logging.LogRecord;
 
 import cn.edu.gdmec.android.mobileguard.R;
+import cn.edu.gdmec.android.mobileguard.m2theftguard.utils.MD5Utils;
 import cn.edu.gdmec.android.mobileguard.m5virusscan.adapter.ScanVirusAdapter;
-import cn.edu.gdmec.android.mobileguard.m5virusscan.entity.AntiVirusDao;
-import cn.edu.gdmec.android.mobileguard.m5virusscan.utils.MD5Utils;
+import cn.edu.gdmec.android.mobileguard.m5virusscan.dao.AntiVirusDao;
+import cn.edu.gdmec.android.mobileguard.m5virusscan.entity.ScanAppInfo;
 
 /**
  * Created by 黄煜辉 on 2017/9/20.
  */
 
-public class VirusScanSpeedActivity{/* extends AppCompatActivity implements View.OnClickListener{
+public class VirusScanSpeedActivity extends AppCompatActivity implements View.OnClickListener{
 
     protected static final int SCAN_BENGIN = 100;
     protected static final int SCANNING = 101;
@@ -86,12 +85,10 @@ public class VirusScanSpeedActivity{/* extends AppCompatActivity implements View
             edit.commit();
         };
     };
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_virus_scan_apeed);
+        setContentView(R.layout.activity_virus_scan_speed);
         pm = getPackageManager();
         mSP = getSharedPreferences("config",MODE_PRIVATE);
         initView();
@@ -104,12 +101,12 @@ public class VirusScanSpeedActivity{/* extends AppCompatActivity implements View
         process = 0;
         mScanAppInfos.clear();
         new Thread(){
-
             public void run(){
                 Message msg = Message.obtain();
                 msg.what = SCAN_BENGIN;
                 mHandler.sendMessage(msg);
-                List<PackageInfo> installedPackages = pm.getInstalledPackages(0);
+                List<PackageInfo> installedPackages = pm
+                        .getInstalledPackages(0);
                 total = installedPackages.size();
                 for (PackageInfo info : installedPackages){
                     if(!flag){
@@ -119,7 +116,10 @@ public class VirusScanSpeedActivity{/* extends AppCompatActivity implements View
                     String apkpath = info.applicationInfo.sourceDir;
 
                     String md5info = MD5Utils.getFileMd5(apkpath);
-                    AntiVirusDao antiVirusDao = new AntiVirusDao(VirusScanSpeedActivity.this.getApplicationContext());
+                    System.out.println(apkpath);
+                    System.out.println(md5info);
+                    AntiVirusDao antiVirusDao = new AntiVirusDao(
+                            VirusScanSpeedActivity.this.getApplicationContext());
                     String result = antiVirusDao.checkVirus(md5info);
                     msg = Message.obtain();
                     msg.what = SCANNING;
@@ -133,7 +133,8 @@ public class VirusScanSpeedActivity{/* extends AppCompatActivity implements View
                     }
                     process++;
                     scanInfo.packagename = info.packageName;
-                    scanInfo.appName = info.applicationInfo.loadLabel(pm).toString();
+                    scanInfo.appName = info.applicationInfo.loadLabel(pm)
+                            .toString();
                     scanInfo.appicon = info.applicationInfo.loadIcon(pm);
                     msg.obj = scanInfo;
                     msg.arg1 = process;
@@ -166,13 +167,14 @@ public class VirusScanSpeedActivity{/* extends AppCompatActivity implements View
         mScanListView = (ListView) findViewById(R.id.lv_scanapps);
         adapter = new ScanVirusAdapter(mScanAppInfos, this);
         mScanListView.setAdapter(adapter);
-        mScanningIcon = (TextView) findViewById(R.id.imgv_scanningicon);
+        mScanningIcon = (ImageView) findViewById(R.id.imgv_scanningicon);
         startAnim();
     }
 
     private void startAnim(){
         if (rani == null){
-            rani = new RotateAnimation(0,360, Animation.RELATIVE_TO_SELF,0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+            rani = new RotateAnimation(0,360, Animation.RELATIVE_TO_SELF,
+                    0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
         }
         rani.setRepeatCount(Animation.INFINITE);
         rani.setDuration(2000);
@@ -194,6 +196,11 @@ public class VirusScanSpeedActivity{/* extends AppCompatActivity implements View
                     flag = false;
 
                     mCancleBtn.setBackgroundResource(R.drawable.restart_scan_btn);
+                }else if (isStop){
+                    startAnim();
+                    scanVirus();
+
+                    mCancleBtn.setBackgroundResource(R.drawable.cancle_scan_btn_selector);
                 }
                 break;
         }
@@ -203,5 +210,5 @@ public class VirusScanSpeedActivity{/* extends AppCompatActivity implements View
     protected void onDestroy(){
         flag = false;
         super.onDestroy();
-    }*/
+    }
 }
