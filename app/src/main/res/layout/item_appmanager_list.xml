@@ -95,7 +95,7 @@
         <TextView
             android:id="@+id/tv_add_app"
             style="@style/tvyellow14sp"
-            android:text="app"
+            android:text="活动"
             android:drawableTop="@drawable/activityicon_yellow_n"/>
     </LinearLayout>
 </LinearLayout>
