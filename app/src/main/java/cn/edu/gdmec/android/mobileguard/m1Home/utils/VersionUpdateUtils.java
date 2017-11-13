@@ -28,6 +28,7 @@ import java.util.logging.LogRecord;
 import cn.edu.gdmec.android.mobileguard.R;
 import cn.edu.gdmec.android.mobileguard.m1Home.HomeActivity;
 import cn.edu.gdmec.android.mobileguard.m1Home.entity.VersionEntity;
+import cn.edu.gdmec.android.mobileguard.m5virusscan.VirusScanActivity;
 
 /**
  * Created by 黄煜辉 on 2017/9/12.
@@ -55,7 +56,8 @@ public class VersionUpdateUtils {
                     showUpdateDialog(versionEntity);
                     break;
                 case MESSAGE_ENTERHOME:
-                    Intent intent=new Intent(context, HomeActivity.class);
+                    //Intent intent=new Intent(context, HomeActivity.class);
+                    Intent intent=new Intent(context, VirusScanActivity.class);
                     context.startActivity(intent);
                     context.finish();
                     break;
@@ -72,7 +74,8 @@ public class VersionUpdateUtils {
             HttpClient httpClient=new DefaultHttpClient();
             HttpConnectionParams.setConnectionTimeout(httpClient.getParams(),5000);
             HttpConnectionParams.setSoTimeout(httpClient.getParams(),5000);
-            HttpGet httpGet =new HttpGet("http://android2017.duapp.com/updateinfo.html");
+            //HttpGet httpGet =new HttpGet("http://android2017.duapp.com/updateinfo.html");
+            HttpGet httpGet =new HttpGet("http://android2017.duapp.com/virusupdateinfo.html");
             HttpResponse execute =httpClient.execute(httpGet);
             if (execute.getStatusLine().getStatusCode()==200){
                 HttpEntity httpEntity=execute.getEntity();
@@ -111,7 +114,7 @@ public class VersionUpdateUtils {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                     dialogInterface.dismiss();
-                    enterHome();
+                    //enterHome();
             }
         });
         builder.show();

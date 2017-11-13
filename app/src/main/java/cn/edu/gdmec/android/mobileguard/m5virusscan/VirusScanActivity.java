@@ -18,6 +18,9 @@ import java.io.InputStream;
 import java.util.List;
 
 import cn.edu.gdmec.android.mobileguard.R;
+import cn.edu.gdmec.android.mobileguard.SplashActivity;
+import cn.edu.gdmec.android.mobileguard.m1Home.utils.MyUtils;
+import cn.edu.gdmec.android.mobileguard.m1Home.utils.VersionUpdateUtils;
 
 /**
  * Created by 黄煜辉 on 2017/9/20.
@@ -26,6 +29,7 @@ import cn.edu.gdmec.android.mobileguard.R;
 public class VirusScanActivity extends AppCompatActivity implements View.OnClickListener{
     private TextView mLastTimeTV;
     private SharedPreferences mSP;
+    private String mVersion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +38,17 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
         mSP=getSharedPreferences("config",MODE_PRIVATE);
         copyDB("antivirus.db");
         initView();
+
+            mVersion = MyUtils.getVersion(getApplicationContext());
+            final VersionUpdateUtils versionUpdateUtils = new VersionUpdateUtils(mVersion, VirusScanActivity.this);
+            new Thread() {
+                @Override
+                public void run() {
+                    super.run();
+                    versionUpdateUtils.getCloudVersion();
+                }
+            }.start();
+
     }
 
     @Override
