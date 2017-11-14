@@ -5,6 +5,7 @@ import android.app.DownloadManager;
 import android.content.Context;
 import android.net.Uri;
 import android.nfc.Tag;
+import android.os.Environment;
 import android.util.Log;
 import android.webkit.MimeTypeMap;
 
@@ -25,7 +26,7 @@ public class DownLoadUtils {
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
         request.setVisibleInDownloadsUi(true);
 
-        request.setDestinationInExternalPublicDir("/data/data/"+context.getPackageName()+"/files/antivirus.db",targetFile);
+        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS,targetFile);
 
         DownloadManager downloadManager = (DownloadManager)context.getSystemService(Context.DOWNLOAD_SERVICE);
         long mTaskid = downloadManager.enqueue(request);
