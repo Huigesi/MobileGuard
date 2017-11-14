@@ -28,6 +28,7 @@ import cn.edu.gdmec.android.mobileguard.m1Home.utils.VersionUpdateUtils;
 
 public class VirusScanActivity extends AppCompatActivity implements View.OnClickListener{
     private TextView mLastTimeTV;
+    private TextView mScanVersion;
     private SharedPreferences mSP;
     private String mVersion;
 
@@ -48,6 +49,7 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
                     versionUpdateUtils.getCloudVersion();
                 }
             }.start();
+        mScanVersion.setText(mVersion);
 
     }
 
@@ -90,6 +92,7 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
         mLeftImgv.setOnClickListener(this);
         mLeftImgv.setImageResource(R.drawable.back);
         mLastTimeTV=(TextView)findViewById(R.id.tv_lastscantime);
+        mScanVersion=(TextView)findViewById(R.id.tv_scan_version);
         findViewById(R.id.rl_allscanvirus).setOnClickListener(this);
 
     }

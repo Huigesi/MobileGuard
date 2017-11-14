@@ -46,6 +46,7 @@ public class VirusScanSpeedActivity extends AppCompatActivity implements View.On
     private RotateAnimation rani;
     private ListView mScanListView;
     private ScanVirusAdapter adapter;
+
     private List<ScanAppInfo> mScanAppInfos = new ArrayList<ScanAppInfo>();
     private SharedPreferences mSP;
     private Handler mHandler = new Handler() {
@@ -166,6 +167,7 @@ public class VirusScanSpeedActivity extends AppCompatActivity implements View.On
         adapter = new ScanVirusAdapter(mScanAppInfos, this);
         mScanListView.setAdapter(adapter);
         mScanningIcon = (ImageView) findViewById(R.id.imgv_scanningicon);
+
         startAnim();
     }
 
