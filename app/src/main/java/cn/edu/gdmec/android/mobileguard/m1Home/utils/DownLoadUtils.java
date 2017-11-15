@@ -27,6 +27,7 @@ public class DownLoadUtils {
         request.setVisibleInDownloadsUi(true);
 
         request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS,targetFile);
+        Log.i("ss",Environment.DIRECTORY_DOWNLOADS);
 
         DownloadManager downloadManager = (DownloadManager)context.getSystemService(Context.DOWNLOAD_SERVICE);
         long mTaskid = downloadManager.enqueue(request);

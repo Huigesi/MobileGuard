@@ -3,6 +3,7 @@ package cn.edu.gdmec.android.mobileguard.m5virusscan;
 import android.content.AsyncQueryHandler;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -17,6 +18,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.util.List;
@@ -44,10 +46,12 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_virus_scan);
         mSP=getSharedPreferences("config",MODE_PRIVATE);
-        copyDB("antivirus.db");
+
+        copyDB("antivirus.db",Environment.DIRECTORY_DOWNLOADS);
+        Log.i("ss",Environment.DIRECTORY_DOWNLOADS);
         initView();
 
-            mVersion = MyUtils.getVersion(getApplicationContext());
+      /*      mVersion = MyUtils.getVersion(getApplicationContext());
             final VersionUpdateUtils versionUpdateUtils = new VersionUpdateUtils(mVersion, VirusScanActivity.this);
             new Thread() {
                 @Override
@@ -57,7 +61,8 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
                 }
             }.start();
         mScanVersion.setText("病毒数据库版本："+mVersion);
-
+*/
+       
     }
 
     @Override
@@ -65,31 +70,32 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
         String string = mSP.getString("lastVirusScan", "您还没有查杀病毒！");
         mLastTimeTV.setText(string);
         super.onResume();
-       Handler mHandler = new Handler() {
-            @Override
-            public void handleMessage(Message msg) {
-                mVersion = MyUtils.getVersion(getApplicationContext());
-                final VersionUpdateUtils versionUpdateUtils = new VersionUpdateUtils(mVersion, VirusScanActivity.this);
-                new Thread() {
-                    @Override
-                    public void run() {
-                        super.run();
-                        versionUpdateUtils.getCloudVersion();
-                    }
-                }.start();
-                mScanVersion.setText("病毒数据库版本："+mVersion);
 
-            }
-        };
     }
-    private void copyDB(final String dbname) {
+    Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            mVersion = MyUtils.getVersion(getApplicationContext());
+            final VersionUpdateUtils versionUpdateUtils = new VersionUpdateUtils(mVersion, VirusScanActivity.this);
+            new Thread() {
+                @Override
+                public void run() {
+                    super.run();
+                    versionUpdateUtils.getCloudVersion();
+                }
+            }.start();
+            mScanVersion.setText("病毒数据库版本："+mVersion);
+            super.handleMessage(msg);
+        }
+    };
+    private void copyDB(final String dbname,final String formPath) {
         new Thread(){
             public void run(){
                 try{
                     File file=new File(getFilesDir(),dbname);
-                    if(file.exists()&&file.length()>0){
+                   if(file.exists()&&file.length()>0){
                         Log.i("VirusScanActivity","数据库已存在");
-                        return;
+                        return ;
                     }
 
                     //File file1 =new File(Environment.DIRECTORY_DOWNLOADS);
@@ -98,7 +104,9 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
                     }else {
 
                     }*/
-                    InputStream is=getAssets().open(dbname);
+                    InputStream is/*=getAssets().open(dbname);*/;
+                    file=new File(formPath,"antivirus.db");
+                    is=new FileInputStream(file);
                     FileOutputStream fos=openFileOutput(dbname,MODE_PRIVATE);
                     byte[] buffer=new byte[1024];
                     int len=0;
@@ -107,6 +115,7 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
                     }
                     is.close();
                     fos.close();
+                    handler.sendEmptyMessage(0);
                 }catch (Exception e){
                     e.printStackTrace();
                 }
