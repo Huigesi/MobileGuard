@@ -76,7 +76,7 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
     };
 
     final private void UpdateDb(String localDbVersion){
-        final VersionUpdateUtils versionUpdateUtils = new VersionUpdateUtils(localDbVersion, VirusScanActivity.this);
+        final VersionUpdateUtils versionUpdateUtils = new VersionUpdateUtils(localDbVersion,VirusScanActivity.this,downloadCallback,null);
         new Thread(){
             @Override
             public void run() {
@@ -86,7 +86,7 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
     }
 
     private void copyDB(final String dbname,final String fromPath) {
-        new Thread (  ){
+        new Thread (){
             public void run(){
                 try{
                     File file = new File ( getFilesDir (),dbname );
@@ -130,7 +130,6 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
         mLeftImgv.setOnClickListener ( this );
         mLeftImgv.setImageResource ( R.drawable.back );
         mLastTimeTV = (TextView) findViewById ( R.id.tv_lastscantime );
-        //mScanVersion=(TextView)findViewById(R.id.tv_scan_version);
         findViewById ( R.id.rl_allscanvirus ).setOnClickListener ( this );
     }
     @Override

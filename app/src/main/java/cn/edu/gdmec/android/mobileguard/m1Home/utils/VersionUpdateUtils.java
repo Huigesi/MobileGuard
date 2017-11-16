@@ -31,6 +31,8 @@ import org.json.JSONObject;
 import java.io.IOException;
 
 import java.util.logging.LogRecord;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import cn.edu.gdmec.android.mobileguard.R;
 import cn.edu.gdmec.android.mobileguard.m1Home.HomeActivity;
@@ -47,7 +49,7 @@ public class VersionUpdateUtils {
     private String mVersion;
     private Activity context;
     private VersionEntity versionEntity;
-    //private Class<?> nextActivty;
+    private Class<?> nextActivty;
 
     private DownloadCallback downloadCallback;
     private long downloadId;
@@ -72,16 +74,28 @@ public class VersionUpdateUtils {
                     break;
                 case MESSAGE_ENTERHOME:
                     //Intent intent=new Intent(context, HomeActivity.class);
-                    Intent intent=new Intent(context, VirusScanActivity.class);
+                    /*Intent intent=new Intent(context, VirusScanActivity.class);
                     context.startActivity(intent);
                     context.finish();
+                    break;*/
+                    if(nextActivty!=null) {
+                        Intent intent = new Intent(context, nextActivty);
+                        context.startActivity(intent);
+                        context.finish();
+                    }
                     break;
             }
         }
     };
-    public VersionUpdateUtils(String mVersion,Activity context){
+    /*public VersionUpdateUtils(String mVersion,Activity context){
         this.mVersion=mVersion;
         this.context=context;
+    }*/
+    public VersionUpdateUtils(String mVersion, Activity context,DownloadCallback downloadCallback,Class<?> nextActivty) {
+        this.mVersion = mVersion;
+        this.context = context;
+        this.downloadCallback = downloadCallback;
+        this.nextActivty = nextActivty;
     }
 
     public void getCloudVersion(String uri){
@@ -129,18 +143,27 @@ public class VersionUpdateUtils {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                     dialogInterface.dismiss();
-                    //enterHome();
+                    enterHome();
             }
         });
         builder.show();
     }
 
     private void enterHome() {
-        handler.sendEmptyMessage(MESSAGE_ENTERHOME);
+        handler.sendEmptyMessageDelayed(MESSAGE_ENTERHOME,1000);
     }
     private void downloadNewApk(String apkurl){
-        DownLoadUtils downloadUtils =new DownLoadUtils();
-        downloadUtils.downloadApk(apkurl,"antivirus.db",context);
+       /* DownLoadUtils downloadUtils =new DownLoadUtils();
+        downloadUtils.downloadApk(apkurl,"antivirus.db",context);*/
+        //DownLoadUtils downloadUtils = new DownLoadUtils();
+        String filename = "downloadfile";
+        String suffixes="avi|mpeg|3gp|mp3|mp4|wav|jpeg|gif|jpg|png|apk|exe|pdf|rar|zip|docx|doc|apk|db";
+        Pattern pat=Pattern.compile("[\\w]+[\\.]("+suffixes+")");//正则判断
+        Matcher mc=pat.matcher(apkurl);//条件匹配
+        while(mc.find()){
+            filename = mc.group();//截取文件名后缀名
+        }
+        downapk(apkurl, filename, context);
     }
     public void downapk(String url,String targetFile,Context context){
         DownloadManager.Request request = new DownloadManager.Request( Uri.parse(url));
