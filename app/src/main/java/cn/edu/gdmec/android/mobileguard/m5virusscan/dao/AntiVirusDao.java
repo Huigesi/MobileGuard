@@ -2,6 +2,7 @@ package cn.edu.gdmec.android.mobileguard.m5virusscan.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -35,7 +36,8 @@ public class AntiVirusDao {
         return desc;
     }
     public String getVirusDbVersion(){
-        String dbVersion = null;
+        /*String dbVersion = null;
+        dbname = "/data/data/"+context.getPackageName()+"/files/antivirus.db";
         SQLiteDatabase db = SQLiteDatabase.openDatabase(
                 dbname, null,
                 SQLiteDatabase.OPEN_READONLY);
@@ -46,6 +48,24 @@ public class AntiVirusDao {
         }
         cursor.close();
         db.close();
-        return dbVersion;
+        return dbVersion;*/
+       String desc = null;
+        PackageManager packageManager = context.getPackageManager();
+        dbname = "/data/data/"+context.getPackageName()+"/files/antivirus.db";
+        SQLiteDatabase db = SQLiteDatabase.openDatabase(
+                dbname, null,
+                SQLiteDatabase.OPEN_READONLY);
+        //select * from version
+
+        Cursor cursor = db.rawQuery("select * from version", null);
+        if (cursor.moveToNext()){
+            desc = cursor.getString(0)+".";
+            desc +=cursor.getString(1)+".";
+            desc +=cursor.getString(2);
+        }
+        cursor.close();
+        db.close();
+        return desc;
+
     }
 }
