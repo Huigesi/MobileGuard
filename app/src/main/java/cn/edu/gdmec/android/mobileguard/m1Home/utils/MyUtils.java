@@ -30,7 +30,6 @@ public class MyUtils {
                     dbname, null,
                     SQLiteDatabase.OPEN_READONLY);
             //select * from version
-
             Cursor cursor = db.rawQuery("select * from version", null);
         if (cursor.moveToNext()){
             desc = cursor.getString(0)+".";

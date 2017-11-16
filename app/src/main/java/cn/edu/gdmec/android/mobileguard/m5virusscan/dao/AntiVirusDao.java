@@ -1,12 +1,11 @@
 package cn.edu.gdmec.android.mobileguard.m5virusscan.dao;
 
-import android.content.ContentValues;
+
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import java.io.File;
 
 /**
  * Created by 黄煜辉 on 2017/9/20.
@@ -66,6 +65,5 @@ public class AntiVirusDao {
         cursor.close();
         db.close();
         return desc;
-
     }
 }

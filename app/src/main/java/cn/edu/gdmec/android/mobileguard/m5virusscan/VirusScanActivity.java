@@ -1,35 +1,29 @@
 package cn.edu.gdmec.android.mobileguard.m5virusscan;
 
-import android.content.AsyncQueryHandler;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.Nullable;
+
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
+
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
-import java.util.List;
+
 
 
 import cn.edu.gdmec.android.mobileguard.R;
-import cn.edu.gdmec.android.mobileguard.SplashActivity;
-import cn.edu.gdmec.android.mobileguard.m1Home.utils.MyUtils;
 import cn.edu.gdmec.android.mobileguard.m1Home.utils.VersionUpdateUtils;
-import cn.edu.gdmec.android.mobileguard.m4appmanager.AppManagerActivity;
-import cn.edu.gdmec.android.mobileguard.m4appmanager.adapter.AppManagerAdapter;
 import cn.edu.gdmec.android.mobileguard.m5virusscan.dao.AntiVirusDao;
 
 /**
@@ -46,7 +40,6 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
         super.onCreate ( savedInstanceState );
         setContentView ( R.layout.activity_virus_scan );
         mSP = getSharedPreferences ( "config", MODE_PRIVATE );
-        //copyDB("antivirus.db");
         copyDB("antivirus.db","");
         initView();
 
@@ -104,7 +97,6 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
                                 "antivirus.db");
                         is= new FileInputStream (file);
                     }
-
                     FileOutputStream fos = openFileOutput ( dbname, MODE_PRIVATE );
                     byte[] buffer = new byte[1024];
                     int len = 0;
