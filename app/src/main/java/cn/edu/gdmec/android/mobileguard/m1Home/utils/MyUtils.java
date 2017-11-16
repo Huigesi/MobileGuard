@@ -11,7 +11,7 @@ import android.database.sqlite.SQLiteDatabase;
  */
 
 public class MyUtils {
-  /*  public static String getVersion(Context context){
+   public static String getVersion(Context context){
         PackageManager packageManager = context.getPackageManager();
         try{
             PackageInfo packageInfo = packageManager.getPackageInfo(context.getPackageName(),0);
@@ -20,8 +20,8 @@ public class MyUtils {
             e.printStackTrace();
             return "";
         }
-    }*/
-    private static String dbname;
+    }
+    /*private static String dbname;
     public static String getVersion(Context context){
         String desc = null;
         PackageManager packageManager = context.getPackageManager();
@@ -42,5 +42,5 @@ public class MyUtils {
             db.close();
 
             return desc;
-    }
+    }*/
 }

@@ -34,4 +34,22 @@ public class AntiVirusDao {
         db.close();
         return desc;
     }
+    public String getVirusDbVersion(){
+        String dbVersion = null;
+        // 打开病毒数据库
+        SQLiteDatabase db = SQLiteDatabase.openDatabase(
+                dbname, null,
+                SQLiteDatabase.OPEN_READONLY);
+       /* String versionnumber = "0";
+        Cursor cursor = db.rawQuery("select  subcnt from version", null);*/
+        Cursor cursor = db.rawQuery("select major||'.'||minor||'.'||build from version",null);
+
+        if (cursor.moveToNext()) {
+            //versionnumber = cursor.getString(0);
+            dbVersion = cursor.getString(0);
+        }
+        cursor.close();
+        db.close();
+        return dbVersion;
+    }
 }

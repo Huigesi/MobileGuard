@@ -2,11 +2,18 @@ package cn.edu.gdmec.android.mobileguard.m1Home.utils;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.DownloadManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.Uri;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.DialogPreference;
+import android.webkit.MimeTypeMap;
 import android.widget.Toast;
 
 import junit.runner.Version;
@@ -30,6 +37,8 @@ import cn.edu.gdmec.android.mobileguard.m1Home.HomeActivity;
 import cn.edu.gdmec.android.mobileguard.m1Home.entity.VersionEntity;
 import cn.edu.gdmec.android.mobileguard.m5virusscan.VirusScanActivity;
 
+import static android.content.Context.DOWNLOAD_SERVICE;
+
 /**
  * Created by 黄煜辉 on 2017/9/12.
  */
@@ -38,6 +47,12 @@ public class VersionUpdateUtils {
     private String mVersion;
     private Activity context;
     private VersionEntity versionEntity;
+    //private Class<?> nextActivty;
+
+    private DownloadCallback downloadCallback;
+    private long downloadId;
+    private BroadcastReceiver broadcastReceiver;
+
 
     private static final int MESSAGE_IO_ERROR=102;
     private static final int MESSAGE_JSON_ERROR=103;
@@ -69,13 +84,13 @@ public class VersionUpdateUtils {
         this.context=context;
     }
 
-    public void getCloudVersion(){
+    public void getCloudVersion(String uri){
         try{
             HttpClient httpClient=new DefaultHttpClient();
             HttpConnectionParams.setConnectionTimeout(httpClient.getParams(),5000);
             HttpConnectionParams.setSoTimeout(httpClient.getParams(),5000);
             //HttpGet httpGet =new HttpGet("http://android2017.duapp.com/updateinfo.html");
-            HttpGet httpGet =new HttpGet("http://android2017.duapp.com/virusupdateinfo.html");
+            HttpGet httpGet =new HttpGet(uri);
             HttpResponse execute =httpClient.execute(httpGet);
             if (execute.getStatusLine().getStatusCode()==200){
                 HttpEntity httpEntity=execute.getEntity();
@@ -127,9 +142,38 @@ public class VersionUpdateUtils {
         DownLoadUtils downloadUtils =new DownLoadUtils();
         downloadUtils.downloadApk(apkurl,"antivirus.db",context);
     }
+    public void downapk(String url,String targetFile,Context context){
+        DownloadManager.Request request = new DownloadManager.Request( Uri.parse(url));
+        request.setAllowedOverRoaming(false);
+        MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
+        String mimeString = mimeTypeMap.getMimeTypeFromExtension(MimeTypeMap.getFileExtensionFromUrl(url));
+        request.setMimeType(mimeString);
+        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
+        request.setVisibleInDownloadsUi(true);
+        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, targetFile);
+        DownloadManager downloadManager = (DownloadManager) context.getSystemService(DOWNLOAD_SERVICE);
+        downloadId = downloadManager.enqueue(request);
+        listener(downloadId,targetFile);
 
-    private void listener(final long Id,final String filename){
+    }
 
+    private void listener(final long Id,final String filename) {
+        IntentFilter intentFilter = new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE);
+        broadcastReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                long ID = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1);
+                if (ID == Id) {
+                    Toast.makeText(context.getApplicationContext(), "下载编号:" + Id +"的"+filename+" 下载完成!", Toast.LENGTH_LONG).show();
+                }
+                context.unregisterReceiver(broadcastReceiver);
+                downloadCallback.afterDownload(filename);
+            }
+        };
+        context.registerReceiver(broadcastReceiver, intentFilter);
+    }
+    public interface DownloadCallback{
+        void afterDownload(String filename);
     }
 }
 
