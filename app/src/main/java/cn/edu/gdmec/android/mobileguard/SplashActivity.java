@@ -24,7 +24,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run(){
                 super.run();
-                versionUpdateUtils.getCloudVersion();
+                versionUpdateUtils.getCloudVersion("http://android2017.duapp.com/updateinfo.html");
             }
         }.start();
     }
