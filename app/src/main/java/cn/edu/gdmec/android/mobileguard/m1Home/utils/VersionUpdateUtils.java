@@ -111,9 +111,12 @@ public class VersionUpdateUtils {
                 String result= EntityUtils.toString(httpEntity,"utf-8");
                 JSONObject jsonObject=new JSONObject(result);
                 versionEntity =new VersionEntity();
-                versionEntity.versioncode=jsonObject.getString("code");
-                versionEntity.description=jsonObject.getString("des");
-                versionEntity.apkurl=jsonObject.getString("apkurl");
+                String code = jsonObject.getString("code");
+                versionEntity.versioncode = code;
+                String des = jsonObject.getString("des");
+                versionEntity.description = des;
+                String apkurl = jsonObject.getString("apkurl");
+                versionEntity.apkurl = apkurl;
                 if (!mVersion.equals(versionEntity.versioncode)){
                    handler.sendEmptyMessage(MESSAGE_SHOW_DIALOG);
                 }

@@ -392,7 +392,7 @@ public class ExampleInstrumentedTest {
             throw new Exception("Blacklist can't be scrolled to load more items.");
         }
     }
-    //@Test
+    @Test
     public void t16AppManager() throws Exception {
         result = mDevice.findObject(new UiSelector().textStartsWith("激活此设备管理员"));
         result.clickAndWaitForNewWindow();
@@ -459,7 +459,7 @@ public class ExampleInstrumentedTest {
             throw new Exception("Can't get app request permissions.");
         }
     }
-    @Test
+    //@Test
     public void t21VirusScan() throws Exception {
         result = mDevice.findObject(new UiSelector().textStartsWith("激活此设备管理员"));
         result.clickAndWaitForNewWindow();
@@ -472,7 +472,7 @@ public class ExampleInstrumentedTest {
             throw new Exception("Can't open VirusScan Activity.");
         }
     }
-    @Test
+    //@Test
     public void t22VirusDbUpdate() throws Exception {
         result = mDevice.findObject(new UiSelector().textStartsWith("手机杀毒"));
         result.clickAndWaitForNewWindow();
@@ -484,7 +484,7 @@ public class ExampleInstrumentedTest {
         }
     }
 
-    @Test
+    //@Test
     public void t23StopAndRestartScan() throws Exception {
         result = mDevice.findObject(new UiSelector().textStartsWith("手机杀毒"));
         result.clickAndWaitForNewWindow();
