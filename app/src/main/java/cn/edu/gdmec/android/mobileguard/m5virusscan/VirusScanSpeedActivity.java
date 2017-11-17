@@ -30,7 +30,6 @@ import cn.edu.gdmec.android.mobileguard.m5virusscan.entity.ScanAppInfo;
 
 
 public class VirusScanSpeedActivity extends AppCompatActivity implements View.OnClickListener{
-
     protected static final int SCAN_BENGIN = 100;
     protected static final int SCANNING = 101;
     protected static final int SCAN_FINISH = 102;
@@ -46,7 +45,6 @@ public class VirusScanSpeedActivity extends AppCompatActivity implements View.On
     private RotateAnimation rani;
     private ListView mScanListView;
     private ScanVirusAdapter adapter;
-
     private List<ScanAppInfo> mScanAppInfos = new ArrayList<ScanAppInfo>();
     private SharedPreferences mSP;
     private Handler mHandler = new Handler() {
@@ -74,12 +72,11 @@ public class VirusScanSpeedActivity extends AppCompatActivity implements View.On
                     break;
             }
         }
-
         private void saveScanTime() {
             SharedPreferences.Editor edit = mSP.edit();
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
-            String currentTime = sdf.format(new Date());
-            currentTime = "上次查杀：" + currentTime;
+            SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+            String currentTime=sdf.format(new Date());
+            currentTime="上次查杀： "+currentTime;
             edit.putString("lastVirusScan", currentTime);
             edit.commit();
         };
@@ -89,31 +86,30 @@ public class VirusScanSpeedActivity extends AppCompatActivity implements View.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_virus_scan_speed);
         pm = getPackageManager();
-        mSP = getSharedPreferences("config",MODE_PRIVATE);
+        mSP = getSharedPreferences("config", MODE_PRIVATE);
         initView();
         scanVirus();
     }
-
     private void scanVirus() {
         flag = true;
         isStop = false;
         process = 0;
         mScanAppInfos.clear();
-        new Thread(){
-            public void run(){
+        new Thread() {
+            public void run() {
                 Message msg = Message.obtain();
                 msg.what = SCAN_BENGIN;
                 mHandler.sendMessage(msg);
                 List<PackageInfo> installedPackages = pm
                         .getInstalledPackages(0);
                 total = installedPackages.size();
-                for (PackageInfo info : installedPackages){
-                    if(!flag){
-                       isStop = true;
+                for (PackageInfo info : installedPackages) {
+                    if (!flag) {
+                        isStop = true;
                         return;
                     }
                     String apkpath = info.applicationInfo.sourceDir;
-
+                    // 检查获取这个文件的 md5特征码
                     String md5info = MD5Utils.getFileMd5(apkpath);
                     System.out.println(apkpath);
                     System.out.println(md5info);
@@ -123,8 +119,8 @@ public class VirusScanSpeedActivity extends AppCompatActivity implements View.On
                     msg = Message.obtain();
                     msg.what = SCANNING;
                     ScanAppInfo scanInfo = new ScanAppInfo();
-                    if (result == null){
-                        scanInfo.description = "扫描完成";
+                    if (result == null) {
+                        scanInfo.description = "扫描安全";
                         scanInfo.isVirus = false;
                     } else {
                         scanInfo.description = result;
@@ -139,9 +135,9 @@ public class VirusScanSpeedActivity extends AppCompatActivity implements View.On
                     msg.arg1 = process;
                     mHandler.sendMessage(msg);
 
-                    try{
+                    try {
                         Thread.sleep(300);
-                    }catch (InterruptedException e){
+                    } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
@@ -152,7 +148,7 @@ public class VirusScanSpeedActivity extends AppCompatActivity implements View.On
         }.start();
     }
 
-    private void initView(){
+    private void initView() {
         findViewById(R.id.rl_titlebar).setBackgroundColor(
                 getResources().getColor(R.color.light_blue));
         ImageView mLeftImgv = (ImageView) findViewById(R.id.imgv_leftbtn);
@@ -167,13 +163,12 @@ public class VirusScanSpeedActivity extends AppCompatActivity implements View.On
         adapter = new ScanVirusAdapter(mScanAppInfos, this);
         mScanListView.setAdapter(adapter);
         mScanningIcon = (ImageView) findViewById(R.id.imgv_scanningicon);
-
         startAnim();
     }
 
-    private void startAnim(){
-        if (rani == null){
-            rani = new RotateAnimation(0,360, Animation.RELATIVE_TO_SELF,
+    private void startAnim() {
+        if (rani == null) {
+            rani = new RotateAnimation(0, 360, Animation.RELATIVE_TO_SELF,
                     0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
         }
         rani.setRepeatCount(Animation.INFINITE);
@@ -182,32 +177,29 @@ public class VirusScanSpeedActivity extends AppCompatActivity implements View.On
     }
 
     @Override
-    public void onClick(View v){
-        switch (v.getId()){
+    public void onClick(View view) {
+        switch (view.getId()) {
             case R.id.imgv_leftbtn:
                 finish();
                 break;
             case R.id.btn_canclescan:
-                if (process == total & process > 0){
+                if (process == total & process > 0) {
                     finish();
-                }else if (process > 0 & process < total & isStop == false){
+                } else if (process > 0 & process < total & isStop == false) {
                     mScanningIcon.clearAnimation();
-
                     flag = false;
-
                     mCancleBtn.setBackgroundResource(R.drawable.restart_scan_btn);
-                }else if (isStop){
+                } else if (isStop) {
                     startAnim();
                     scanVirus();
-
-                    mCancleBtn.setBackgroundResource(R.drawable.cancle_scan_btn_selector);
+                    mCancleBtn.setBackgroundResource(R.drawable.scanning_icon);
                 }
                 break;
         }
     }
 
     @Override
-    protected void onDestroy(){
+    protected void onDestroy() {
         flag = false;
         super.onDestroy();
     }

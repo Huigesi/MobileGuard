@@ -169,7 +169,6 @@ public class VersionUpdateUtils {
     }
 
     public void downapk(String url,String targetFile,Context context){
-        //创建下载任务
         DownloadManager.Request request = new DownloadManager.Request( Uri.parse(url));
         request.setAllowedOverRoaming(false);
         MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
@@ -185,7 +184,6 @@ public class VersionUpdateUtils {
     }
 
     private void listener(final long Id,final String filename) {
-        // 注册广播监听系统的下载完成事件。
         IntentFilter intentFilter = new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE);
         broadcastReceiver = new BroadcastReceiver() {
             @Override
