@@ -1,11 +1,11 @@
 package cn.edu.gdmec.android.mobileguard.m5virusscan.dao;
 
-
+import android.content.ContentValues;
 import android.content.Context;
-import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.io.File;
 
 /**
  * Created by 黄煜辉 on 2017/9/20.
@@ -29,38 +29,6 @@ public class AntiVirusDao {
                 new String[] { md5 });
         if (cursor.moveToNext()){
             desc = cursor.getString(0);
-        }
-        cursor.close();
-        db.close();
-        return desc;
-    }
-    public String getVirusDbVersion(){
-        /*String dbVersion = null;
-        dbname = "/data/data/"+context.getPackageName()+"/files/antivirus.db";
-        SQLiteDatabase db = SQLiteDatabase.openDatabase(
-                dbname, null,
-                SQLiteDatabase.OPEN_READONLY);
-        Cursor cursor = db.rawQuery("select major||'.'||minor||'.'||build from version",null);
-
-        if (cursor.moveToNext()) {
-            dbVersion = cursor.getString(0);
-        }
-        cursor.close();
-        db.close();
-        return dbVersion;*/
-       String desc = null;
-        PackageManager packageManager = context.getPackageManager();
-        dbname = "/data/data/"+context.getPackageName()+"/files/antivirus.db";
-        SQLiteDatabase db = SQLiteDatabase.openDatabase(
-                dbname, null,
-                SQLiteDatabase.OPEN_READONLY);
-        //select * from version
-
-        Cursor cursor = db.rawQuery("select * from version", null);
-        if (cursor.moveToNext()){
-            desc = cursor.getString(0)+".";
-            desc +=cursor.getString(1)+".";
-            desc +=cursor.getString(2);
         }
         cursor.close();
         db.close();

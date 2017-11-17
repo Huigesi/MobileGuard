@@ -96,7 +96,7 @@ public class HomeActivity extends AppCompatActivity {
 
     public void startActivity(Class<?> cls){
         Intent intent=new Intent(HomeActivity.this,cls);
-       startActivity(intent);
+        startActivity(intent);
     }
 
 
@@ -150,11 +150,11 @@ public class HomeActivity extends AppCompatActivity {
             public void confirm(){
                 if(TextUtils.isEmpty(mInPswdDialog.getPassword())){
                     Toast.makeText(HomeActivity.this,"密码不能为空",Toast.LENGTH_LONG).show();
-                    }else if(password.equals(MD5Utils.encode(mInPswdDialog.getPassword()))){
-                        mInPswdDialog.dismiss();
-                        startActivity(LostFindActivity.class);
-                        Toast.makeText(HomeActivity.this,"可以进入手机防盗模块",Toast.LENGTH_LONG).show();
-                    }else {
+                }else if(password.equals(MD5Utils.encode(mInPswdDialog.getPassword()))){
+                    mInPswdDialog.dismiss();
+                    startActivity(LostFindActivity.class);
+                    Toast.makeText(HomeActivity.this,"可以进入手机防盗模块",Toast.LENGTH_LONG).show();
+                }else {
                     mInPswdDialog.dismiss();
                     Toast.makeText(HomeActivity.this,"密码有误，请重新输入",Toast.LENGTH_LONG).show();
                 }

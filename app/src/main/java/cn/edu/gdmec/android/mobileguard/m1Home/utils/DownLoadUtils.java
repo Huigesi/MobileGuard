@@ -1,15 +1,9 @@
 package cn.edu.gdmec.android.mobileguard.m1Home.utils;
 
-import android.app.AlertDialog;
 import android.app.DownloadManager;
 import android.content.Context;
 import android.net.Uri;
-import android.nfc.Tag;
-import android.os.Environment;
-import android.util.Log;
 import android.webkit.MimeTypeMap;
-
-import java.util.regex.Pattern;
 
 /**
  * Created by 黄煜辉 on 2017/9/12.
@@ -26,9 +20,7 @@ public class DownLoadUtils {
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
         request.setVisibleInDownloadsUi(true);
 
-        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS,targetFile);
-        Log.i("ss",Environment.DIRECTORY_DOWNLOADS);
-
+        request.setDestinationInExternalPublicDir("/download",targetFile);
         DownloadManager downloadManager = (DownloadManager)context.getSystemService(Context.DOWNLOAD_SERVICE);
         long mTaskid = downloadManager.enqueue(request);
 
