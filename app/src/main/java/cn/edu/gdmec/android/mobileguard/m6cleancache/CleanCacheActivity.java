@@ -32,7 +32,7 @@ import cn.edu.gdmec.android.mobileguard.m6cleancache.entity.CacheInfo;
  * Created by 黄煜辉 on 2017/9/20.
  */
 
-public class CleanCacheActivity extends AppCompatActivity implements View.OnClickListener{
+public class CleanCacheActivity {/*extends AppCompatActivity implements View.OnClickListener{
     protected static final int CLEANNING=100;
     protected static final int CLEAN_FINISH=101;
     private AnimationDrawable animation;
@@ -165,5 +165,5 @@ public class CleanCacheActivity extends AppCompatActivity implements View.OnClic
                 break;
         }
 
-    }
+    }*/
 }
