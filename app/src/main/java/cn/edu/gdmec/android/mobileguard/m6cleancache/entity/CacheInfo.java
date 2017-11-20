@@ -7,11 +7,11 @@ import android.graphics.drawable.Drawable;
  */
 
 public class CacheInfo {
-   /* public String packagename;
+    public String packagename;
 
     public long cacheSize;
 
     public Drawable appIcon;
 
-    public String appName;*/
+    public String appName;
 }

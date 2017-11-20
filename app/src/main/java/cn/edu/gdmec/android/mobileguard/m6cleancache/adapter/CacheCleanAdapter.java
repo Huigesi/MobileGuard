@@ -17,7 +17,7 @@ import cn.edu.gdmec.android.mobileguard.m6cleancache.entity.CacheInfo;
  * Created by 黄煜辉 on 2017/9/20.
  */
 
-public class CacheCleanAdapter {/*extends BaseAdapter{
+public class CacheCleanAdapter extends BaseAdapter{
     private Context context;
     private List<CacheInfo> cacheInfos;
      public CacheCleanAdapter(Context context,List<CacheInfo> cacheInfos){
@@ -64,7 +64,7 @@ public class CacheCleanAdapter {/*extends BaseAdapter{
         ImageView mAppIconImgv;
         TextView mAppNameTV;
         TextView mCacheSizeTV;
-    }*/
+    }
 }
 
 
