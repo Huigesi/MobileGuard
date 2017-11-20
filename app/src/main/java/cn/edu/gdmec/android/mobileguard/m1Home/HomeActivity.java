@@ -66,7 +66,7 @@ public class HomeActivity extends AppCompatActivity {
                         startActivity(VirusScanActivity.class);
                         break;
                     case 4://缓存清理
-                        //startActivity(CacheClearListActivity.class);
+                        startActivity(CacheClearListActivity.class);
                     case 5://进程管理
                         //startActivity(ProcessManagerActivity.class);
                         break;
