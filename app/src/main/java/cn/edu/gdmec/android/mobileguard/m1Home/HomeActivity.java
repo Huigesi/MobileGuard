@@ -37,7 +37,6 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //初始化布局
         setContentView(R.layout.activity_home);
         getSupportActionBar().hide();
         msharedPreferences = getSharedPreferences("config", MODE_PRIVATE);
