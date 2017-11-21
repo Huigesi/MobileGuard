@@ -77,7 +77,7 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
         }.start();
     }
     private void copyDB(final String dbname,final String fromPath) {
-        new Thread (  ){
+        new Thread (){
             public void run(){
                 try{
                     File file = new File ( getFilesDir (),dbname );

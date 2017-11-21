@@ -1,11 +1,13 @@
 package cn.edu.gdmec.android.mobileguard;
 
+import android.content.Intent;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Window;
 import android.widget.TextView;
 
+import cn.edu.gdmec.android.mobileguard.m1Home.HomeActivity;
 import cn.edu.gdmec.android.mobileguard.m1Home.utils.MyUtils;
 import cn.edu.gdmec.android.mobileguard.m1Home.utils.VersionUpdateUtils;
 import cn.edu.gdmec.android.mobileguard.m5virusscan.VirusScanActivity;
@@ -16,8 +18,7 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        /*requestWindowFeature(Window.FEATURE_NO_TITLE);
-
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_splash);
         mVersion = MyUtils.getVersion(getApplicationContext());
         mTvVersion=(TextView)findViewById(R.id.tv_splash_version);
@@ -25,17 +26,19 @@ public class SplashActivity extends AppCompatActivity {
         VersionUpdateUtils.DownloadCallback downloadCallback = new VersionUpdateUtils.DownloadCallback() {
             @Override
             public void afterDownload(String filename) {
-                copyDB("antivirus.db", Environment.getExternalStoragePublicDirectory("/download/").getPath());
+                MyUtils.installApk(SplashActivity.this,filename);
             }
         };
-        final VersionUpdateUtils versionUpdateUtils=new VersionUpdateUtils(mVersion,SplashActivity.this,downloadCallback,null);
+        final VersionUpdateUtils versionUpdateUtils=new VersionUpdateUtils(mVersion,SplashActivity.this,downloadCallback,HomeActivity.class);
         new Thread(){
             @Override
             public void run(){
                 super.run();
                 versionUpdateUtils.getCloudVersion("http://android2017.duapp.com/updateinfo.html");
             }
-        }.start();*/
+        }.start();
+       /* startActivity(new Intent(this, HomeActivity.class));
+        finish();*/
     }
 
 }

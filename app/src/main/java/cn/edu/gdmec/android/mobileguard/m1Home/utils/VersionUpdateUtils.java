@@ -149,6 +149,7 @@ public class VersionUpdateUtils {
             }
         });
         builder.show();
+
     }
     //发送进入主界面消息
     private void enterHome() {
