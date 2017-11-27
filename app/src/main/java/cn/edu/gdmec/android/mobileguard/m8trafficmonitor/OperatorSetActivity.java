@@ -16,7 +16,7 @@ import cn.edu.gdmec.android.mobileguard.R;
  * Created by 黄煜辉 on 2017/9/20.
  */
 
-public class OperatorSetActivity{/* extends AppCompatActivity implements View.OnClickListener{
+public class OperatorSetActivity extends AppCompatActivity implements View.OnClickListener{
     private Spinner mSelectSP;
     private String[] operators = { "中国移动", "中国联通", "中国电信" };
     private ArrayAdapter mSelectadapter;
@@ -57,5 +57,5 @@ public class OperatorSetActivity{/* extends AppCompatActivity implements View.On
                 finish();
                 break;
         }
-    }*/
+    }
 }

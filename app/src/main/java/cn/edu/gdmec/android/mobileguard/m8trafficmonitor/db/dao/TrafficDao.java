@@ -4,9 +4,12 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.icu.text.SimpleDateFormat;
-import android.icu.util.Calendar;
+
 import android.text.TextUtils;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import cn.edu.gdmec.android.mobileguard.m8trafficmonitor.db.TrafficOpenHelper;
 
@@ -14,7 +17,7 @@ import cn.edu.gdmec.android.mobileguard.m8trafficmonitor.db.TrafficOpenHelper;
  * Created by 黄煜辉 on 2017/9/20.
  */
 
-public class TrafficDao {/*
+public class TrafficDao {
     private TrafficOpenHelper helper;
 
     public TrafficDao(Context context){
@@ -62,5 +65,5 @@ public class TrafficDao {/*
         values.put("date", "datetime(" + dataString + ")");
         db.update("traffic", values, "date=?", new String[] {"datetime("
                 + dataString + ")"});
-    }*/
+    }
 }

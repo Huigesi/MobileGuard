@@ -24,6 +24,7 @@ import cn.edu.gdmec.android.mobileguard.m3communicationguard.SecurityPhoneActivi
 import cn.edu.gdmec.android.mobileguard.m4appmanager.AppManagerActivity;
 import cn.edu.gdmec.android.mobileguard.m5virusscan.VirusScanActivity;
 import cn.edu.gdmec.android.mobileguard.m6cleancache.CacheClearListActivity;
+import cn.edu.gdmec.android.mobileguard.m8trafficmonitor.TrafficMonitoringActivity;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -70,8 +71,7 @@ public class HomeActivity extends AppCompatActivity {
                         //startActivity(ProcessManagerActivity.class);
                         break;
                     case 6://流量统计
-                        //startActivity(TrafficMonitoringActivity.class);
-                        break;
+                        startActivity(TrafficMonitoringActivity.class);
                     case 7://高级工具
                         //startActivity(AdvancedToolsActivity.class);
                         break;

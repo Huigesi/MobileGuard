@@ -3,11 +3,11 @@ package cn.edu.gdmec.android.mobileguard.m8trafficmonitor.service;
 import android.app.Service;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.icu.text.SimpleDateFormat;
-import android.icu.util.Calendar;
 import android.net.TrafficStats;
 import android.os.IBinder;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import cn.edu.gdmec.android.mobileguard.m8trafficmonitor.db.dao.TrafficDao;
@@ -16,7 +16,7 @@ import cn.edu.gdmec.android.mobileguard.m8trafficmonitor.db.dao.TrafficDao;
  * Created by 黄煜辉 on 2017/9/20.
  */
 
-public class TrafficMonitoringService{/* extends Service{
+public class TrafficMonitoringService extends Service{
     private long mOldRxBytes;
     private long mOldTxBytes;
     private TrafficDao dao;
@@ -94,5 +94,5 @@ public class TrafficMonitoringService{/* extends Service{
             mThread = null;
         }
         super.onDestroy();
-    }*/
+    }
 }

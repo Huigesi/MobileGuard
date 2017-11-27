@@ -5,10 +5,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
-import android.icu.text.SimpleDateFormat;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.telephony.SmsManager;
+import android.telephony.SmsMessage;
 import android.text.TextUtils;
 import android.text.format.Formatter;
 import android.view.View;
@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
@@ -30,7 +31,7 @@ import cn.edu.gdmec.android.mobileguard.m8trafficmonitor.utils.SystemInfoUtils;
  * Created by 黄煜辉 on 2017/9/20.
  */
 
-public class TrafficMonitoringActivity{/* extends AppCompatActivity implements View.OnClickListener{
+public class TrafficMonitoringActivity extends AppCompatActivity implements View.OnClickListener{
     private SharedPreferences mSP;
     private Button mCorrectFlowBtn;
     private TextView mTotalTV;
@@ -102,7 +103,7 @@ public class TrafficMonitoringActivity{/* extends AppCompatActivity implements V
         if (moblieGPRS < 0){
             moblieGPRS = 0;
         }
-        mToDayTV.setText("本月已用：" + Formatter.formatFileSize(this, moblieGPRS));
+        mToDayTV.setText("本日已用：" + Formatter.formatFileSize(this, moblieGPRS));
     }
 
     private void registReceiver(){
@@ -127,11 +128,11 @@ public class TrafficMonitoringActivity{/* extends AppCompatActivity implements V
                 switch (i){
                     case 0:
 
-                        Toast.makeText(this, "您还没有设置运营商信息", 0).show();
+                        Toast.makeText(this, "您还没有设置运营商信息", Toast.LENGTH_SHORT).show();
                         break;
                     case 1:
 
-                        smsManager.sendDataMessage("10086", null, "CXLL", null, null);
+                        smsManager.sendTextMessage("10086", null, "CXLL", null, null);
                         break;
                     case 2:
 
@@ -148,9 +149,9 @@ public class TrafficMonitoringActivity{/* extends AppCompatActivity implements V
         public void onReceive(Context context, Intent intent){
             Object[] objs = (Object[]) intent.getExtras().get("pdus");
             for (Object obj : objs){
-                SmsManager smsManager = SmsManager.createFromPdu((byte[]) obj);
-                String body = smsManager.getMessageBody();
-                String address = smsManager.getOriginatingAddress();
+                SmsMessage smsMessage = SmsMessage.createFromPdu((byte[]) obj);
+                String body = smsMessage.getMessageBody();
+                String address = smsMessage.getOriginatingAddress();
 
                 if (!address.equals("10086")){
                     return;
@@ -218,5 +219,5 @@ public class TrafficMonitoringActivity{/* extends AppCompatActivity implements V
             receiver = null;
         }
         super.onDestroy();
-    }*/
+    }
 }

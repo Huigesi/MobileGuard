@@ -12,7 +12,7 @@ import cn.edu.gdmec.android.mobileguard.m8trafficmonitor.utils.SystemInfoUtils;
  * Created by 黄煜辉 on 2017/9/20.
  */
 
-public class BootCompleteReciever{/* extends BroadcastReceiver{
+public class BootCompleteReciever extends BroadcastReceiver{
     @Override
     public void onReceive(Context context, Intent intent){
 
@@ -22,5 +22,5 @@ public class BootCompleteReciever{/* extends BroadcastReceiver{
             Log.d("traffic service","turn on");
             context.startService(new Intent(context, TrafficMonitoringService.class));
         }
-    }*/
+    }
 }

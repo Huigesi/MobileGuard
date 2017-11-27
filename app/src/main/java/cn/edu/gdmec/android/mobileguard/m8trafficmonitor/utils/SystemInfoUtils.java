@@ -10,7 +10,7 @@ import java.util.List;
  * Created by 黄煜辉 on 2017/9/20.
  */
 
-public class SystemInfoUtils {/*
+public class SystemInfoUtils {
 
 
     public static boolean isServiceRunning(Context context, String className){
@@ -23,5 +23,5 @@ public class SystemInfoUtils {/*
             }
         }
         return false;
-    }*/
+    }
 }

@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  * Created by 黄煜辉 on 2017/9/20.
  */
 
-public class TrafficOpenHelper{/* extends SQLiteOpenHelper{
+public class TrafficOpenHelper extends SQLiteOpenHelper{
     private static final String DB_NAME = "traffic.db";
     private static final String TABLE_NAME = "traffic";
 
@@ -19,12 +19,12 @@ public class TrafficOpenHelper{/* extends SQLiteOpenHelper{
     }
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase){
-        sqLiteDatabase.execSQL("create table" + TABLE_NAME
+        sqLiteDatabase.execSQL("create table " + TABLE_NAME
             + "(id integer primary key autoincrement," + GPRS
             + " varchar(255)," + TIME +" datetime)");
     }
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1){
 
-    }*/
+    }
 }
