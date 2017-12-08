@@ -1,31 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:custom_android="http://schemas.android.com/apk/res/cn.edu.gdmec.android.mobileguard"
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
-
+    android:orientation="vertical"
+    tools:context="cn.edu.gdmec.android.mobileguard.m9advancedtools.AdvancedToolsActivity">
     <include layout="@layout/titlebar"/>
 
     <cn.edu.gdmec.android.mobileguard.m9advancedtools.widget.MyCircleProgress
         android:id="@+id/advanceview_numbelogs"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        custom_android:desc="号码归属地查询"
+        app:desc="号码归属地查询"
         android:gravity="center_vertical"
-        android:src="@drawable/numofbelongto">
-    </cn.edu.gdmec.android.mobileguard.m9advancedtools.widget.MyCircleProgress>
+        android:src="@drawable/numofbelongto"/>
 
     <cn.edu.gdmec.android.mobileguard.m9advancedtools.widget.MyCircleProgress
         android:id="@+id/advanceview_smsbackup"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        custom_android:desc="短信备份"
+        app:desc="短信备份"
         android:gravity="center_vertical"
         android:layout_marginTop="3dp"
-        android:src="@drawable/sms_backup">
-    </cn.edu.gdmec.android.mobileguard.m9advancedtools.widget.MyCircleProgress>
+        android:src="@drawable/sms_backup"/>
 
     <cn.edu.gdmec.android.mobileguard.m9advancedtools.widget.MyCircleProgress
         android:id="@+id/advanceview_smsreducition"
@@ -33,17 +31,14 @@
         android:layout_height="55dp"
         android:gravity="center_vertical"
         android:layout_marginTop="3dp"
-        custom_android:desc="短信还原"
-        android:src="@drawable/sms_reduction">
-    </cn.edu.gdmec.android.mobileguard.m9advancedtools.widget.MyCircleProgress>
-
+        app:desc="短信还原"
+        android:src="@drawable/sms_reduction"/>
     <cn.edu.gdmec.android.mobileguard.m9advancedtools.widget.MyCircleProgress
         android:id="@+id/advanceview_applock"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:gravity="center_vertical"
         android:layout_marginTop="3dp"
-        custom_android:desc="程序锁"
-        android:src="@drawable/programoflock">
-    </cn.edu.gdmec.android.mobileguard.m9advancedtools.widget.MyCircleProgress>
+        app:desc="程序锁"
+        android:src="@drawable/programoflock"/>
 </LinearLayout>
