@@ -23,7 +23,7 @@ import cn.edu.gdmec.android.mobileguard.m9advancedtools.db.dao.NumBelongtoDao;
  * Created by 黄煜辉 on 2017/9/20.
  */
 
-public class NumBelongtoActivity{/* extends AppCompatActivity implements View.OnClickListener{
+public class NumBelongtoActivity extends AppCompatActivity implements View.OnClickListener{
     private EditText mNumET;
     private TextView mResultTV;
     private String dbName = "address.db";
@@ -116,5 +116,5 @@ public class NumBelongtoActivity{/* extends AppCompatActivity implements View.On
                 }
             };
         }.start();
-    }*/
+    }
 }

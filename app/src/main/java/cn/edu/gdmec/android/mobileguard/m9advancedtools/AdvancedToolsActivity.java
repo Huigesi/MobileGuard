@@ -13,7 +13,7 @@ import cn.edu.gdmec.android.mobileguard.R;
  * Created by 黄煜辉 on 2017/9/20.
  */
 
-public class AdvancedToolsActivity{/* extends AppCompatActivity implements View.OnClickListener{
+public class AdvancedToolsActivity extends AppCompatActivity implements View.OnClickListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -53,5 +53,5 @@ public class AdvancedToolsActivity{/* extends AppCompatActivity implements View.
     public void startActivity(Class<?> cls){
         Intent intent = new Intent(this,cls);
         startActivity(intent);
-    }*/
+    }
 }

@@ -9,7 +9,7 @@ import android.text.TextUtils;
  * Created by 黄煜辉 on 2017/9/20.
  */
 
-public class NumBelongtoDao {/*
+public class NumBelongtoDao {
 
     public static String getLocation(Context context, String phonenumber) {
 
@@ -82,5 +82,5 @@ public class NumBelongtoDao {/*
         db.close();
         return location;
 
-    }*/
+    }
 }

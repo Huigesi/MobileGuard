@@ -15,7 +15,7 @@ import cn.edu.gdmec.android.mobileguard.R;
  * Created by 黄煜辉 on 2017/9/20.
  */
 
-public class AdvancedToolsView{/* extends RelativeLayout{
+public class AdvancedToolsView extends RelativeLayout{
 
     private TextView mDesriptionTV;
     private String desc = "";
@@ -49,5 +49,5 @@ public class AdvancedToolsView{/* extends RelativeLayout{
         mLeftImgv = (ImageView) findViewById(R.id.imgv_left);
         mDesriptionTV.setText(desc);
         if (drawable != null)mLeftImgv.setImageDrawable(drawable);
-    }*/
+    }
 }
