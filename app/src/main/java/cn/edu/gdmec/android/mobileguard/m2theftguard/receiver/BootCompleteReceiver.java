@@ -16,5 +16,7 @@ public class BootCompleteReceiver extends BroadcastReceiver{
     @Override
     public void onReceive(Context context, Intent intent) {
         ((App)(context.getApplicationContext())).correctSIM();
+
+        //context.startService(new Intent(context.AppLockService.class));
     }
 }

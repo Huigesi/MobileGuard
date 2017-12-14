@@ -23,5 +23,5 @@ public class AppInfo {
             return "外部存储";
         }
     }
-
+   public boolean isLock;
 }
