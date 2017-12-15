@@ -1,6 +1,6 @@
 package cn.edu.gdmec.android.mobileguard.m9advancedtools;
 
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -21,7 +21,7 @@ import cn.edu.gdmec.android.mobileguard.m9advancedtools.fragment.AppUnLockFragme
  * Created by 黄煜辉 on 2017/9/20.
  */
 
-public class AppLockActivity{/* extends AppCompatActivity implements View.OnClickListener{
+public class AppLockActivity extends AppCompatActivity implements View.OnClickListener{
 
     private ViewPager mAppViewPager;
     List<Fragment> mFragments = new ArrayList<Fragment>();
@@ -106,7 +106,7 @@ public class AppLockActivity{/* extends AppCompatActivity implements View.OnClic
         mAppViewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
 
     }
-    class MyAdapter extends FragmentPagerAdapter{
+    class MyAdapter extends FragmentPagerAdapter {
         public MyAdapter(FragmentManager fm){
             super(fm);
         }
@@ -120,5 +120,5 @@ public class AppLockActivity{/* extends AppCompatActivity implements View.OnClic
         public int getCount(){
             return mFragments.size();
         }
-    }*/
+    }
 }

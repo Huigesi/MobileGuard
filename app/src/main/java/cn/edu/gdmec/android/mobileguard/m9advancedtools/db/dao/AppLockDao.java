@@ -17,7 +17,7 @@ import cn.edu.gdmec.android.mobileguard.m9advancedtools.db.AppLockOpenHelper;
  * Created by 黄煜辉 on 2017/9/20.
  */
 
-public class AppLockDao {/*
+public class AppLockDao {
 
     private Context context;
     private AppLockOpenHelper openHelper;
@@ -80,5 +80,5 @@ public class AppLockDao {/*
             packages.add(string);
         }
         return packages;
-    }*/
+    }
 }

@@ -17,7 +17,7 @@ import cn.edu.gdmec.android.mobileguard.m4appmanager.entity.AppInfo;
  * Created by 黄煜辉 on 2017/9/20.
  */
 
-public class AppLockAdapter{/* extends BaseAdapter{
+public class AppLockAdapter extends BaseAdapter{
     private List<AppInfo> appInfos;
     private Context context;
 
@@ -62,7 +62,7 @@ public class AppLockAdapter{/* extends BaseAdapter{
             holder.mLockIcon.setBackgroundResource(R.drawable.applock_icon);
         }else {
 
-            holder.mLockIcon.setBackgroundResource(R.drawable.applock_icon)
+            holder.mLockIcon.setBackgroundResource(R.drawable.appunlock_icon);
         }
         return view;
     }
@@ -71,5 +71,5 @@ public class AppLockAdapter{/* extends BaseAdapter{
         ImageView mAppIconImgv;
 
         ImageView mLockIcon;
-    }*/
+    }
 }

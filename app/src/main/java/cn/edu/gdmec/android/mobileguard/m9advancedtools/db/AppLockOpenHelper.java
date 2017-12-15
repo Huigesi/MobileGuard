@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  * Created by 黄煜辉 on 2017/9/20.
  */
 
-public class AppLockOpenHelper{/* extends SQLiteOpenHelper{
+public class AppLockOpenHelper extends SQLiteOpenHelper{
     public AppLockOpenHelper(Context context){
         super(context, "applock.db", null, 1);
     }
@@ -20,5 +20,5 @@ public class AppLockOpenHelper{/* extends SQLiteOpenHelper{
     @Override
     public void onUpgrade(SQLiteDatabase db,int oldVersion, int newVersion){
 
-    }*/
+    }
 }

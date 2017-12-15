@@ -1,9 +1,10 @@
 package cn.edu.gdmec.android.mobileguard.m9advancedtools.fragment;
 
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.database.ContentObserver;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,22 +17,22 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Handler;
 
+import cn.edu.gdmec.android.mobileguard.App;
 import cn.edu.gdmec.android.mobileguard.R;
+import cn.edu.gdmec.android.mobileguard.m4appmanager.entity.AppInfo;
+import cn.edu.gdmec.android.mobileguard.m4appmanager.utils.AppInfoParser;
 import cn.edu.gdmec.android.mobileguard.m9advancedtools.adapter.AppLockAdapter;
 import cn.edu.gdmec.android.mobileguard.m9advancedtools.db.dao.AppLockDao;
-import cn.edu.gdmec.android.mobileguard.m9advancedtools.entity.AppInfo;
-import cn.edu.gdmec.android.mobileguard.m9advancedtools.utils.AppInfoParser;
 
 /**
  * Created by 黄煜辉 on 2017/9/20.
  */
 
-public class AppUnLockFragment{/* extends Fragment{
+public class AppUnLockFragment extends Fragment{
     private TextView mUnLockTV;
     private ListView mUnLockLV;
-    List<AppInfo> unlockApps = new ArrayList<~>();
+    List<AppInfo> unlockApps = new ArrayList<AppInfo>();
     private AppLockAdapter adapter;
     private AppLockDao dao;
     private Uri uri = Uri.parse(App.APPLOCK_CONTENT_URI);
@@ -85,14 +86,14 @@ public class AppUnLockFragment{/* extends Fragment{
         final List<AppInfo> aInfos = new ArrayList<AppInfo>();
         new Thread(){
             public void run(){
-                for (AppInfo info : aInfos){
+                for (AppInfo info : appInfos){
                     if (!dao.find(info.packageName)){
 
                         info.isLock = false;
                         aInfos.add(info);
                     }
                 }
-                Message mag = new Message();
+                Message msg = new Message();
                 msg.obj = aInfos;
                 msg.what = 100;
                 mhandler.sendMessage(msg);
@@ -101,7 +102,7 @@ public class AppUnLockFragment{/* extends Fragment{
     }
 
     private void initListener(){
-        mUnLockLV.setOnClickListener(new AdapterView.OnItemClickListener(){
+        mUnLockLV.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
@@ -136,5 +137,5 @@ public class AppUnLockFragment{/* extends Fragment{
                 }.start();
             }
         });
-    }*/
+    }
 }

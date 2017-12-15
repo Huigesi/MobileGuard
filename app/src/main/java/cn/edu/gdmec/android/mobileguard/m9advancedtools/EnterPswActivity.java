@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import cn.edu.gdmec.android.mobileguard.App;
 import cn.edu.gdmec.android.mobileguard.R;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.utils.MD5Utils;
 
@@ -22,7 +23,7 @@ import cn.edu.gdmec.android.mobileguard.m2theftguard.utils.MD5Utils;
  * Created by 黄煜辉 on 2017/9/20.
  */
 
-public class EnterPswActivity{/* extends AppCompatActivity implements View.OnClickListener{
+public class EnterPswActivity extends AppCompatActivity implements View.OnClickListener{
     private ImageView mAppIcon;
     private TextView mAppNameTV;
     private EditText mPswET;
@@ -58,7 +59,7 @@ public class EnterPswActivity{/* extends AppCompatActivity implements View.OnCli
         mEnterPswLL = (LinearLayout) findViewById(R.id.ll_enterpsw);
         mGoImgv.setOnClickListener(this);
     }
-}
+
 @Override
 public void onClick(View view){
     switch (view.getId()){
@@ -91,5 +92,5 @@ public void onClick(View view){
 private void startAnim(){
     Animation animation = AnimationUtils.loadAnimation(this, R.anim.shake);
     mEnterPswLL.startAnimation(animation);
-}*/
+}
 }

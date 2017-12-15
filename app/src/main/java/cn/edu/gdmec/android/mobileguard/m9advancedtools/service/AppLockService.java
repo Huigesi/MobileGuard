@@ -11,11 +11,12 @@ import android.content.IntentFilter;
 import android.database.ContentObserver;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Handler;
 import android.os.IBinder;
 
 import java.util.List;
-import java.util.logging.Handler;
 
+import cn.edu.gdmec.android.mobileguard.App;
 import cn.edu.gdmec.android.mobileguard.m9advancedtools.EnterPswActivity;
 import cn.edu.gdmec.android.mobileguard.m9advancedtools.db.dao.AppLockDao;
 
@@ -23,7 +24,7 @@ import cn.edu.gdmec.android.mobileguard.m9advancedtools.db.dao.AppLockDao;
  * Created by 黄煜辉 on 2017/9/20.
  */
 
-public class AppLockService{/* extends Service{
+public class AppLockService extends Service{
 
     private boolean flag = false;
     private AppLockDao dao;
@@ -89,7 +90,7 @@ public class AppLockService{/* extends Service{
         filter.addAction(Intent.ACTION_SCREEN_OFF);
         registerReceiver(receiver, filter);
 
-        intent = new Intent(AppLockReceiver.this, EnterPswActivity.class);
+        intent = new Intent(AppLockService.this, EnterPswActivity.class);
 
         am = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
         startApplockService();
@@ -153,5 +154,5 @@ public class AppLockService{/* extends Service{
                 }
             };
         }.start();
-    }*/
+    }
 }
