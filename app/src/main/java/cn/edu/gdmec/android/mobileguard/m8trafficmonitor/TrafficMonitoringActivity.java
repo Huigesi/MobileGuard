@@ -124,6 +124,13 @@ public class TrafficMonitoringActivity extends AppCompatActivity implements View
             case R.id.btn_correction_flow:
 
                 int i = mSP.getInt("operator", 0);
+
+
+
+
+
+
+
                 SmsManager smsManager = SmsManager.getDefault();
                 switch (i){
                     case 0:
