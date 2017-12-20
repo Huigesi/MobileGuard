@@ -540,7 +540,7 @@ public class ExampleInstrumentedTest {
             throw new Exception("Can't enter CacheScanActivity.");
         }
     }
-    //@Test
+    @Test
     public void t27EnterTrafficMonitoring() throws Exception {
         result = mDevice.findObject(new UiSelector().textStartsWith("关闭"));
         result.clickAndWaitForNewWindow();
@@ -586,7 +586,7 @@ public class ExampleInstrumentedTest {
         }
         result.clickAndWaitForNewWindow();
     }
-    @Test
+    //@Test
     public void t30ResetOperator() throws Exception {
         result = mDevice.findObject(new UiSelector().textStartsWith("暂不升级"));
         result.clickAndWaitForNewWindow();
